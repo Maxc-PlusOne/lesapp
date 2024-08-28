@@ -2,9 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\app",
-    "\\navigation",
-    "\\navigation\\screen"
+    "\\screens"
   ],
-  "SelectedNode": "\\app\\index.js",
+  "SelectedNode": "\\screens\\HomeScreen.js",
   "PreviewInSolutionExplorer": false
 }

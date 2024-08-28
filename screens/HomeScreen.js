@@ -1,35 +1,74 @@
-import * as React from "react";
-import { View, Text, StyleSheet } from "react-native";
-
+import React, { useState, useEffect } from 'react';
+import { View, StyleSheet, ActivityIndicator, Text } from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
+import * as Location from 'expo-location';
 export default function HomeScreen() {
+    const [location, setLocation] = useState(null);
+    const [errorMsg, setErrorMsg] = useState(null);
+
+    useEffect(() => {
+        (async () => {
+            let { status } = await Location.requestForegroundPermissionsAsync();
+            if (status !== 'granted') {
+                setErrorMsg('Permission to access location was denied');
+                return;
+            }
+            let location = await Location.getCurrentPositionAsync({});
+            setLocation(location);
+        })();
+    }, []);
+
+    if (errorMsg) {
+        return (
+            <View style={styles.container}>
+                <Text>{errorMsg}</Text>
+            </View>
+        );
+    }
+    if (!location) {
+        return (
+            <View style={styles.container}>
+                <ActivityIndicator size="large" color="red" />
+            </View>
+        );
+    }
     return (
         <View style={styles.container}>
-            <View style={styles.main}>
-                <Text style={styles.subtitle}> This is the Home Screen </Text>
-            </View>
+            <MapView
+                style={styles.map}
+                region={{
+                    latitude: location.coords.latitude,
+                    longitude: location.coords.longitude,
+                    longitudeDelta: 0.002,
+                    latitudeDelta: 0.002,
+
+                }}
+            >
+                <Marker
+                    coordinate={{
+                        latitude: location.coords.latitude,
+                        longitude: location.coords.longitude,
+
+                    }}
+                    title="You"
+                />
+            </MapView>
         </View>
-    )
+    );
 }
-
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: "center",
-        padding: 24,
+        alignItems: 'center',
+        justifyContent:'center',
+        justifyContent:'center',
+        zIndex: 1
+},
+
+    map: {
+        ...StyleSheet.absoluteFillObject,
+         zIndex:2,
+
     },
-    main: {
-        flex: 1,
-        justifyContent: "center",
-        maxWidth: 960,
-        marginHorizontal: "auto",
-    },
-    title: {
-        fontSize: 64,
-        fontWeight: "bold",
-    },
-    subtitle: {
-        fontSize: 36,
-        color: "#38434D",
-    },
+
 });
