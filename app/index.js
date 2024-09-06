@@ -7,54 +7,92 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "../screens/HomeScreen";
 import AlertsScreen from "../screens/AlertsScreen";
 import ProfileScreen from "../screens/ProfileScreen";
+import InitialScreen from "../screens/InitialScreen";
+import OTPScreen from "../screens/OTPScreen";
 
 
-const Tab = createBottomTabNavigator();
-const sOptions = ({route}) => ({
-    headerShown: false,
-    tabBarStyle: {
-        position: "absolute",
-        marginBottom:0,
-    },
-
-    tabBarIcon: ({ focused, color, size }) => {
-        let iconName;
-        
-
-        if (route.name === "Home") {
-            iconName = 'home-button';
-        } else if (route.name === "Alerts") {
-            iconName = 'turn-notifications-on-button';
-        } else if (route.name === "Profile") {
-            iconName = 'user-shape'
-        }
-        return <Icon name={iconName} color={color} />;
-    },
-
-    tabBarInactiveTintColor:"black",
-    tabBarActiveTintColor: "red",
-    tabBarLabelStyle: {
-        fontSize: 12,
-        marginBottom:-20,
-    }
-})
 export default function App() {
+    const [isSignedIn, setIsSignedIn] = React.useState(false);
+    const updateIsSignedIn = (value) => {
+        setIsSignedIn(value)
+    };
+    const OTPScreenWrapper = (props) => <OTPScreen {...props} updateStatus={updateIsSignedIn} />;
+    const Tab = createBottomTabNavigator();
+
+    //Main Application
+    function MainApp() {
+        const sOptions = ({ route }) => ({
+            headerShown: false,
+            tabBarStyle: {
+                position: "absolute",
+                marginBottom: 0,
+            },
+
+            tabBarIcon: ({ focused, color, size }) => {
+                let iconName;
+
+
+                if (route.name === "Home") {
+                    iconName = 'home-button';
+                } else if (route.name === "Alerts") {
+                    iconName = 'turn-notifications-on-button';
+                } else if (route.name === "Profile") {
+                    iconName = 'user-shape'
+                }
+                return <Icon name={iconName} color={color} />;
+            },
+
+            tabBarInactiveTintColor: "black",
+            tabBarActiveTintColor: "red",
+            tabBarLabelStyle: {
+                fontSize: 12,
+                marginBottom: -20,
+            }
+        })
+
+        return (
+            <Tab.Navigator screenOptions={sOptions}>
+                <Tab.Screen name="Home" component={HomeScreen} />
+                <Tab.Screen name="Alerts" component={AlertsScreen} />
+                <Tab.Screen name="Profile" component={ProfileScreen} />
+            </Tab.Navigator>
+        );
+    }
+
+    //Initinial Setup Screen
+    function InitialSetup() {
+        const options = () => (
+            {
+                tabBarStyle: {
+                    display: "none",
+                }
+            }
+        );
+
+        return (
+            <Tab.Navigator screenOptions={{ headerShown: false, tabBarShown: false, initialRoute: 'Initial' }}>
+                <Tab.Screen name="Initial" component={InitialScreen} options={options} />
+                <Tab.Screen name="OTP" component={OTPScreenWrapper}
+                    options={options} />
+            </Tab.Navigator>
+        );
+    }
+
     return (
-        <View style={{ flex: 1 }}>
-            <StatusBar translucent={true} style="auto" />
-            <NavigationContainer independent={true}>
-                <Tab.Navigator style={styles.tabBar} screenOptions={sOptions}>
-                    <Tab.Screen name="Home" component={HomeScreen} />
-                    <Tab.Screen name="Alerts" component={AlertsScreen} />
-                    <Tab.Screen name="Profile" component={ProfileScreen} />
-                </Tab.Navigator>
-            </NavigationContainer>
-        </View>
-    );
+        <NavigationContainer independent={true}>
+            {isSignedIn ? <MainApp /> : <InitialSetup />}
+        </NavigationContainer>
+    )
 }
 
 const styles = StyleSheet.create({
     tabBar: {
         align: "center"
+    },
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 1
     }
 })
