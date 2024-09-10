@@ -4,33 +4,41 @@ import {
     Pressable, Image, Keyboard, KeyboardAvoidingView, Platform
 } from 'react-native';
 
-export default function Setup({ navigation,updateStatus}) {
-    const pNumber = '{ your phone number }';
+export default function Setup({ navigation,updateStatus,route}) {
     const [otp, setOtp] = React.useState('');
+    const {phoneNumber} = route.params;
+    const { name } = route.params;
+    const [errorMessage, setErrorMessage] = React.useState('');
+    const onConfirmPress = () => {
 
-    const onConfirmPress= () => {
-        updateStatus(true);
+        if (otp.length === 4) {
+            updateStatus(true);
+        } else {
+            setErrorMessage('Please enter a valid OTP.');
+        }
     }
 
     return (
         <KeyboardAvoidingView
             style={styles.container}
             behavior={Platform.OS === "ios" ? "padding" : "height"}
-            keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20} // Adjust if needed
-        >
-            <Text style={styles.title}>Verify your phone number</Text>
-            <Text style={styles.subtitle}> Type the 4-digit OTP that was sent to {pNumber}</Text>
-            <Pressable style={{marginTop:'2%'} }>
-                <Text style={{color:'red'}}> Didn't get code? </Text>
-            </Pressable>
+            keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}>
+
             <Pressable onPress={Keyboard.dismiss} style={styles.container}>
+                <Text style={styles.title}> Verify your phone number </Text>
+                <Text style={styles.subtitle}> Type the 4-digit OTP that was sent to {phoneNumber}</Text>
+                <Pressable style={{ marginTop: '2%' }}>
+                    <Text style={{ color: '#5B636C'}}> Didn't get code? </Text>
+                </Pressable>
                 <View style={styles.formContainer}>
                     <TextInput style={styles.inputBox} maxLength={4}
                         onChangeText={(value) => setOtp(value)}
                         value={otp }
-                        keyboardType='numeric' />
-
+                        keyboardType='numeric'
+                    />
+                   
                 </View>
+                {errorMessage ? <Text style={{color:'red'}}>{errorMessage}</Text> : null}
                 <Pressable style={styles.btnConfirm} onPress={onConfirmPress}>
                     <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 24 }}>Confirm</Text>
                 </Pressable>
@@ -91,7 +99,7 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         width: screenWidth * 0.85,
         height: 40,
-        marginTop: '4%',
+        marginTop: '2%',
     },
     title: {
         fontSize: 32,

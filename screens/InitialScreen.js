@@ -7,8 +7,29 @@ import {
 export default function Setup({navigation}) {
     const [name, setName] = React.useState('');
     const [phoneNumber, setPhoneNumber] = React.useState('');
+    const [errorMessage, setErrorMessage] = React.useState('');
     function nextPress() {
-        navigation.jumpTo('OTP', { phoneNumber, name });
+        const isValid = validate();
+        if (isValid) {
+            navigation.jumpTo('OTP', { phoneNumber, name }) 
+        }
+
+   
+    }
+
+    function validate() {
+        if (!name) {
+            setErrorMessage('Name cannot be empty!');
+            return false;
+        } else if (phoneNumber.length !== 10) {
+            setErrorMessage('Please enter a valid phone number.');
+            return false;
+        } else {    
+            setErrorMessage();
+            return true;
+
+        }
+
     }
 
     return (
@@ -20,19 +41,22 @@ export default function Setup({navigation}) {
         <Pressable onPress={Keyboard.dismiss} style={styles.container}>
 
                 <Image style={styles.img} source={require('../assets/images/lesappLogoW.png')} />
-            <Text style={styles.title}>Getting you started.</Text>
+            <Text style={styles.title}> Getting you started.</Text>
           
             <View style={styles.formContainer}>
                 <View>
                         <Text style={styles.label}>Name</Text>
                         <TextInput style={styles.input} maxLength={20}
-                            onChangeText={(value) => { setName(value) }} value={name} />
+                            onChangeText={(value) => {
+                                setName(value)
+                            }} value={name} />
                 </View>
                 <View style={{ paddingTop: 8 }}>
                         <Text style={styles.label}>Mobile Number</Text>
                         <TextInput style={styles.input} maxLength={10} keyboardType='numeric'
-                            onChangeText={(value) => { setPhoneNumber(value) }} value={phoneNumber} />
+                            onChangeText={(value) => {setPhoneNumber(value) }} value={phoneNumber}/>
                     </View>
+                    {errorMessage ? <Text style={{marginTop:'2%',color:'red'}}>{errorMessage}</Text> : null}
                     <Pressable style={styles.button} onPress={nextPress}>
                     <Text style={{ fontSize: 24, color: 'white',fontWeight:'bold' }}> Next </Text>
                 </Pressable>
@@ -77,7 +101,7 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         width: screenWidth * 0.85,
         height: 60,
-        top:'8%'
+        top:'4%'
     },
     title: {
         fontSize: 32,
