@@ -5,12 +5,14 @@ import * as Location from 'expo-location';
 import SwipeButton from '../components/SwipeButton';
 import { DummySOSButton } from '../components/DummySOSButton';
 export default function HomeScreen() {
+    const [BtnColor, setBtnColor] = useState('red');
+    const [isActivated, setIsActivated] = useState(false);
+    const [BtnText, setBtnText] = useState('Send SOS');
+
     // Location //
     const [location, setLocation] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
-    const [BtnColor, setBtnColor] = useState('red');
-    const [isActivated, setIsActivated] = useState(false);
-    const [BtnText, setBtnText ]=useState( 'Send SOS');
+
     useEffect(() => {
         (async () => {
             let { status } = await Location.requestForegroundPermissionsAsync();
@@ -38,6 +40,7 @@ export default function HomeScreen() {
         );
     }
 
+    //Confirmation Popup (Alert)
     function showAlert(action) {
 
         const onPress = () => {
@@ -76,6 +79,7 @@ export default function HomeScreen() {
 
     }
 
+    //SOS Button Press
     function onPress() {
         if (!isActivated) {
                 showAlert('send SOS?')
@@ -136,7 +140,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        justifyContent:'center',
         justifyContent:'center',
         zIndex: 1
     },
