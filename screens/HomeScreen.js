@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, ActivityIndicator, Text,Pressable, Alert} from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
+import { useNavigation } from '@react-navigation/native';
 import SwipeButton from '../components/SwipeButton';
-import { DummySOSButton } from '../components/DummySOSButton';
+import Capture from '../components/Capture';
 export default function HomeScreen() {
     const [BtnColor, setBtnColor] = useState('red');
     const [isActivated, setIsActivated] = useState(false);
     const [BtnText, setBtnText] = useState('Send SOS');
+    const navigation = useNavigation();
 
     // Location //
     const [location, setLocation] = useState(null);
@@ -80,10 +82,10 @@ export default function HomeScreen() {
     }
 
     //SOS Button Press
-    function onPress() {
+    function sendSOS() {
+        const navigateToCapture = () => { navigation.navigate('Capture') };
         if (!isActivated) {
-                showAlert('send SOS?')
-
+            navigateToCapture();
         }
         else if (isActivated) {
                 showAlert('cancel request?')
@@ -98,7 +100,7 @@ export default function HomeScreen() {
             <View style={styles.infoBar}>
                 <Text style={styles.infoText}>Showing current address here</Text>
             </View>
-            <Pressable onPress={onPress} style={{
+            <Pressable onPress={sendSOS} style={{
                 zIndex: 5,
                 backgroundColor:BtnColor,
                 width: '80%',

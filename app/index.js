@@ -4,23 +4,35 @@ import Icon from 'react-native-ico-material-design';
 import {View, StyleSheet } from 'react-native'
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from "../screens/HomeScreen";
 import AlertsScreen from "../screens/AlertsScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import InitialScreen from "../screens/InitialScreen";
 import OTPScreen from "../screens/OTPScreen";
-
+import Capture from "../components/Capture";
 
 export default function App() {
-    const [isSignedIn, setIsSignedIn] = React.useState(false);
+    const [isSignedIn, setIsSignedIn] = React.useState(true);
     const updateIsSignedIn = (value) => {
         setIsSignedIn(value)
     };
     const OTPScreenWrapper = (props) => <OTPScreen {...props} updateStatus={updateIsSignedIn} />;
     const Tab = createBottomTabNavigator();
+    const Stack = createStackNavigator();
 
-    //Main Application
-    function MainApp() {
+    //MainApp Stack for navigation 
+    function MainAppStack() {
+        return (
+            <Stack.Navigator screenOptions={{ headerShown: false, tabBarShown: false, initialRoute: 'Main Screen' }}>
+                <Stack.Screen name='Main Screen' component={MainScreen} />
+                <Stack.Screen name='Capture' component={Capture} />
+            </Stack.Navigator>
+        )
+    }
+
+    //Main Screen
+    function MainScreen() {
         const sOptions = ({ route }) => ({
             headerShown: false,
             tabBarStyle: {
@@ -80,7 +92,7 @@ export default function App() {
 
     return (
         <NavigationContainer independent={true}>
-            {isSignedIn ? <MainApp /> : <InitialSetup />}
+            {isSignedIn ? <MainAppStack /> : <InitialSetup />}
         </NavigationContainer>
     )
 }

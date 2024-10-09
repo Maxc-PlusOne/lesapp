@@ -2,7 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\app",
-    "\\res",
+    "\\assets",
+    "\\components",
     "\\screens"
   ],
   "SelectedNode": "\\app\\index.js",
