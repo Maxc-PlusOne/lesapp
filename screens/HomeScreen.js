@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, ActivityIndicator, Text,Pressable, Alert} from 'react-native';
+import { View, StyleSheet, Text,Pressable, Alert} from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
 import { useNavigation } from '@react-navigation/native';
-import SwipeButton from '../components/SwipeButton';
 import Capture from '../components/Capture';
+import Loading from '../components/ActivityIndicator';
+
 export default function HomeScreen() {
     const [BtnColor, setBtnColor] = useState('red');
     const [isActivated, setIsActivated] = useState(false);
@@ -36,9 +37,7 @@ export default function HomeScreen() {
     }
     if (!location) {
         return (
-            <View style={styles.container}>
-                <ActivityIndicator size="large" color="red" />
-            </View>
+                <Loading/>
         );
     }
 
