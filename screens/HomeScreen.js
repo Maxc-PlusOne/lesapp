@@ -12,7 +12,7 @@ export default function HomeScreen() {
     const [BtnText, setBtnText] = useState('Send SOS');
     const navigation = useNavigation();
 
-    // Location //
+    // Location (GPT)//
     const [location, setLocation] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
 
@@ -82,7 +82,7 @@ export default function HomeScreen() {
 
     //SOS Button Press
     function sendSOS() {
-        const navigateToCapture = () => { navigation.navigate('Capture') };
+        const navigateToCapture = () => { navigation.navigate('Capture', { locationParam: {location}}) };
         if (!isActivated) {
             navigateToCapture();
         }

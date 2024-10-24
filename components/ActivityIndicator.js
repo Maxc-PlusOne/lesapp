@@ -14,6 +14,6 @@ const styles = StyleSheet.create({
 		flex: 1,
 		alignItems: 'center',
 		justifyContent: 'center',
-		zIndex: 1
+		zIndex: 10
 	}
 })

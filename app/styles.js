@@ -19,8 +19,9 @@ export const globalStyles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: 'red',
         borderRadius: 15,
-        width: width * 0.80,
-        height: 60
+        width: width * 0.85,
+        height: 60,
+        paddingHorizontal:'4%',
     },
     btnText: {
         color: 'white',
@@ -31,5 +32,21 @@ export const globalStyles = StyleSheet.create({
         color: '#808A93',
         left: 0,
         margin:'2%'
+    },
+    imagePreview: {
+        margin: '8%',
+        marginTop: '0%',
+        width: '80%',
+        height: '40%',
+        borderRadius: 10,
+    },
+    title: {
+        size: 48,
+        fontWeight: 'bold',
+
+    },
+    subtitle: {
+        size: 48,
+        fontWeight: 'bold',
     },
 });

@@ -3,9 +3,10 @@
     "",
     "\\app",
     "\\assets",
+    "\\assets\\images",
     "\\components",
-    "\\screens"
+    "\\screens",
+    "\\utils"
   ],
-  "SelectedNode": "\\app\\index.js",
   "PreviewInSolutionExplorer": false
 }

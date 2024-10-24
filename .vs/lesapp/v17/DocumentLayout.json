@@ -3,32 +3,39 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\source\\lesapp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\source\\lesapp\\app\\index.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\index.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\source\\lesapp\\screens\\AlertViewScreen.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:screens\\AlertViewScreen.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\source\\lesapp\\app\\styles.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\styles.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\source\\lesapp\\components\\Camera.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:components\\Camera.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\source\\fakedb.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\source\\lesapp\\node_modules\\react-native-ico-material-design\\typings.d.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:node_modules\\react-native-ico-material-design\\typings.d.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\source\\lesapp\\screens\\AlertsScreen.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:screens\\AlertsScreen.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\source\\lesapp\\components\\SwipeButton.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:components\\SwipeButton.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\source\\lesapp\\components\\Capture.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:components\\Capture.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\source\\lesapp\\screens\\InitialScreen.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:screens\\InitialScreen.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\source\\lesapp\\components\\Success.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:components\\Success.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\source\\lesapp\\screens\\ProfileScreen.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:screens\\ProfileScreen.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\source\\lesapp\\components\\ActivityIndicator.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:components\\ActivityIndicator.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\source\\lesapp\\utils\\apiService.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:utils\\apiService.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\source\\lesapp\\app\\index.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\index.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\source\\lesapp\\screens\\HomeScreen.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
@@ -37,6 +44,22 @@
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\source\\lesapp\\screens\\OTPScreen.js||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:screens\\OTPScreen.js||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\source\\lesapp\\screens\\ProfileScreen.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:screens\\ProfileScreen.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\source\\lesapp\\screens\\InitialScreen.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:screens\\InitialScreen.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\source\\lesapp\\components\\Oops.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:components\\Oops.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\source\\lesapp\\components\\SwipeButton.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:components\\SwipeButton.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\source\\lesapp\\package.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -58,21 +81,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 431,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 3,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "typings.d.ts",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\lesapp\\node_modules\\react-native-ico-material-design\\typings.d.ts",
-              "RelativeDocumentMoniker": "node_modules\\react-native-ico-material-design\\typings.d.ts",
-              "ToolTip": "C:\\Users\\Admin\\source\\lesapp\\node_modules\\react-native-ico-material-design\\typings.d.ts",
-              "RelativeToolTip": "node_modules\\react-native-ico-material-design\\typings.d.ts",
-              "ViewState": "AQIAAJsBAAAAAAAAAAAlwKwBAAAWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2024-09-02T08:25:45.575Z",
-              "IsPinned": true
-            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -81,49 +91,159 @@
               "RelativeDocumentMoniker": "app\\styles.js",
               "ToolTip": "C:\\Users\\Admin\\source\\lesapp\\app\\styles.js",
               "RelativeToolTip": "app\\styles.js",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAAB4AAAAYAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-10-04T09:41:10.952Z"
+              "WhenOpened": "2024-10-04T09:41:10.952Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Oops.js",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\lesapp\\components\\Oops.js",
+              "RelativeDocumentMoniker": "components\\Oops.js",
+              "ToolTip": "C:\\Users\\Admin\\source\\lesapp\\components\\Oops.js",
+              "RelativeToolTip": "components\\Oops.js",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-10-16T10:01:56.934Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Camera.js",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\lesapp\\components\\Camera.js",
-              "RelativeDocumentMoniker": "components\\Camera.js",
-              "ToolTip": "C:\\Users\\Admin\\source\\lesapp\\components\\Camera.js",
-              "RelativeToolTip": "components\\Camera.js",
-              "ViewState": "AQIAAJAAAAAAAAAAAAAAAH4AAAAXAAAA",
+              "Title": "fakedb.json",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\fakedb.json",
+              "RelativeDocumentMoniker": "..\\fakedb.json",
+              "ToolTip": "C:\\Users\\Admin\\source\\fakedb.json",
+              "RelativeToolTip": "..\\fakedb.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-10-22T13:02:51.702Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AlertViewScreen.js",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\lesapp\\screens\\AlertViewScreen.js",
+              "RelativeDocumentMoniker": "screens\\AlertViewScreen.js",
+              "ToolTip": "C:\\Users\\Admin\\source\\lesapp\\screens\\AlertViewScreen.js",
+              "RelativeToolTip": "screens\\AlertViewScreen.js",
+              "ViewState": "AQIAACwAAAAAAAAAAAAcwDsAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-10-22T12:42:03.995Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ActivityIndicator.js",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\lesapp\\components\\ActivityIndicator.js",
+              "RelativeDocumentMoniker": "components\\ActivityIndicator.js",
+              "ToolTip": "C:\\Users\\Admin\\source\\lesapp\\components\\ActivityIndicator.js",
+              "RelativeToolTip": "components\\ActivityIndicator.js",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-10-18T12:56:01.015Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "apiService.js",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\lesapp\\utils\\apiService.js",
+              "RelativeDocumentMoniker": "utils\\apiService.js",
+              "ToolTip": "C:\\Users\\Admin\\source\\lesapp\\utils\\apiService.js",
+              "RelativeToolTip": "utils\\apiService.js",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-10-09T13:51:33.301Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Capture.js",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\lesapp\\components\\Capture.js",
+              "RelativeDocumentMoniker": "components\\Capture.js",
+              "ToolTip": "C:\\Users\\Admin\\source\\lesapp\\components\\Capture.js",
+              "RelativeToolTip": "components\\Capture.js",
+              "ViewState": "AQIAAFYAAAAAAAAAAAAswG4AAABeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2024-09-10T09:53:18.718Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "SwipeButton.js",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\lesapp\\components\\SwipeButton.js",
-              "RelativeDocumentMoniker": "components\\SwipeButton.js",
-              "ToolTip": "C:\\Users\\Admin\\source\\lesapp\\components\\SwipeButton.js",
-              "RelativeToolTip": "components\\SwipeButton.js",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 3,
+              "Title": "AlertsScreen.js",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\lesapp\\screens\\AlertsScreen.js",
+              "RelativeDocumentMoniker": "screens\\AlertsScreen.js",
+              "ToolTip": "C:\\Users\\Admin\\source\\lesapp\\screens\\AlertsScreen.js",
+              "RelativeToolTip": "screens\\AlertsScreen.js",
+              "ViewState": "AQIAABwAAAAAAAAAAAAQwDAAAAA/AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-09-10T09:45:20.272Z"
+              "WhenOpened": "2024-10-10T07:41:13.318Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "Success.js",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\lesapp\\components\\Success.js",
+              "RelativeDocumentMoniker": "components\\Success.js",
+              "ToolTip": "C:\\Users\\Admin\\source\\lesapp\\components\\Success.js",
+              "RelativeToolTip": "components\\Success.js",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAADYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-10-21T07:57:49.832Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "HomeScreen.js",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\lesapp\\screens\\HomeScreen.js",
+              "RelativeDocumentMoniker": "screens\\HomeScreen.js",
+              "ToolTip": "C:\\Users\\Admin\\source\\lesapp\\screens\\HomeScreen.js",
+              "RelativeToolTip": "screens\\HomeScreen.js",
+              "ViewState": "AQIAAHIAAAAAAAAAAAAYwJ4AAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-08-26T13:02:01.086Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "InitialScreen.js",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\lesapp\\screens\\InitialScreen.js",
               "RelativeDocumentMoniker": "screens\\InitialScreen.js",
               "ToolTip": "C:\\Users\\Admin\\source\\lesapp\\screens\\InitialScreen.js",
               "RelativeToolTip": "screens\\InitialScreen.js",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAoAAAAaAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2024-09-02T08:52:04.247Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 14,
+              "Title": "SwipeButton.js",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\lesapp\\components\\SwipeButton.js",
+              "RelativeDocumentMoniker": "components\\SwipeButton.js",
+              "ToolTip": "C:\\Users\\Admin\\source\\lesapp\\components\\SwipeButton.js",
+              "RelativeToolTip": "components\\SwipeButton.js",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADQAAAAGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-09-10T09:45:20.272Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "index.js",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\lesapp\\app\\index.js",
+              "RelativeDocumentMoniker": "app\\index.js",
+              "ToolTip": "C:\\Users\\Admin\\source\\lesapp\\app\\index.js",
+              "RelativeToolTip": "app\\index.js",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAuwA8AAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-08-22T11:04:36.41Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "ProfileScreen.js",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\lesapp\\screens\\ProfileScreen.js",
               "RelativeDocumentMoniker": "screens\\ProfileScreen.js",
@@ -135,44 +255,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "OTPScreen.js",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\lesapp\\screens\\OTPScreen.js",
               "RelativeDocumentMoniker": "screens\\OTPScreen.js",
               "ToolTip": "C:\\Users\\Admin\\source\\lesapp\\screens\\OTPScreen.js",
               "RelativeToolTip": "screens\\OTPScreen.js",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAAwA8AAAAQAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2024-09-03T12:11:01.261Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "HomeScreen.js",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\lesapp\\screens\\HomeScreen.js",
-              "RelativeDocumentMoniker": "screens\\HomeScreen.js",
-              "ToolTip": "C:\\Users\\Admin\\source\\lesapp\\screens\\HomeScreen.js",
-              "RelativeToolTip": "screens\\HomeScreen.js",
-              "ViewState": "AQIAACYAAAAAMzMzMzMbwA4AAAAVAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-08-26T13:02:01.086Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "index.js",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\lesapp\\app\\index.js",
-              "RelativeDocumentMoniker": "app\\index.js",
-              "ToolTip": "C:\\Users\\Admin\\source\\lesapp\\app\\index.js",
-              "RelativeToolTip": "app\\index.js",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAxwDoAAABAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-08-22T11:04:36.41Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 16,
               "Title": "_layout.js",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\lesapp\\app\\_layout.js",
               "RelativeDocumentMoniker": "app\\_layout.js",
@@ -184,7 +279,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 17,
               "Title": "app.json",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\lesapp\\app.json",
               "RelativeDocumentMoniker": "app.json",
@@ -196,7 +291,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 15,
               "Title": "package.json",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\lesapp\\package.json",
               "RelativeDocumentMoniker": "package.json",

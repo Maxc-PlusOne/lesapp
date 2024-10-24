@@ -11,6 +11,7 @@ import ProfileScreen from "../screens/ProfileScreen";
 import InitialScreen from "../screens/InitialScreen";
 import OTPScreen from "../screens/OTPScreen";
 import Capture from "../components/Capture";
+import AlertViewScreen from "../screens/AlertViewScreen";
 
 export default function App() {
     const [isSignedIn, setIsSignedIn] = React.useState(true);
@@ -27,6 +28,7 @@ export default function App() {
             <Stack.Navigator screenOptions={{ headerShown: false, tabBarShown: false, initialRoute: 'Main Screen' }}>
                 <Stack.Screen name='Main Screen' component={MainScreen} />
                 <Stack.Screen name='Capture' component={Capture} />
+                <Stack.Screen name='AlertView' component={AlertViewScreen} />
             </Stack.Navigator>
         )
     }
