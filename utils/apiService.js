@@ -1,4 +1,4 @@
-const testURL = 'http://192.168.0.172:3000/alerts';
+const testURL = 'http://192.168.0.172:3000/';
 const testURL2 = 'https://23ba8e32-0bdb-4680-b84f-a3e67d592426.mock.pstmn.io/alerts';
 const baseURL = 'https://api.restful-api.dev/objects';
 export const apiService = {

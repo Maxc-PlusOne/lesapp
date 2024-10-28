@@ -15,7 +15,7 @@ export default function AlertsScreen() {
 
     async function getData() {
         try {
-            const res = await apiService.get();
+            const res = await apiService.get('alerts');
             if (res.status) {
                 setStatusCode(res.status)
                 setData('error')
