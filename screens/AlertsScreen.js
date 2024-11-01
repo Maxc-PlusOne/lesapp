@@ -44,9 +44,7 @@ export default function AlertsScreen() {
         return (
             <Pressable onPress={() => { viewItem(item.id) } }>
                 <View style={styles.item}>
-                    <Text style={styles.subtitle}> {item.location} </Text>
-                    <Text style={styles}> Type: {item.accidentType} </Text>
-                    <Text style={styles}> Sender: {item.sender?.name} </Text>
+                    <Text style={styles.subtitle}> {item.location.lat}, {item.location.lng} </Text>
                 </View>
             </Pressable>
         )
@@ -68,7 +66,9 @@ export default function AlertsScreen() {
                     data={data}
                     renderItem={render}
                     keyExtractor={item => item.id.toString()}
-                    ItemSeparatorComponent={() => <View style={{ height: 2,marginVertical:4, width:'100%', backgroundColor: 'gray' }} />}
+                    ItemSeparatorComponent={() =>
+                        <View style={{ height: 2, marginVertical: 4, width: '100%', backgroundColor: 'gray' }} />
+                    }
                 />
             </View>
         </View >

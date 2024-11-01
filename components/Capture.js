@@ -8,6 +8,7 @@ import { apiService } from '../utils/apiService';
 import Loading from './ActivityIndicator';
 import Success from './Success';
 import Oops from './Oops';
+import storageService from '../utils/storageService';
 
 
 export default function Capture({ route }) {
@@ -28,8 +29,8 @@ export default function Capture({ route }) {
         return <View />;
     }
 
+    // Camera permissions are not granted yet.
     if (!permission.granted) {
-        // Camera permissions are not granted yet.
         return (
             <View style={styles.container}>
                 <Text style={styles.message}>This app needs your permission to use the camera</Text>
@@ -54,16 +55,24 @@ export default function Capture({ route }) {
     //Sending data using service API
     async function sendData() {
         setLoading(true)
+
+        const userId = await storageService.get('userId')
         const newAlert = {
-            photo: photoUri, location: locationParam.location.coords, accidentType:'Car Crash', sender:'Bobby Malls'}
+            photo: photoUri,
+            location: {
+                lat: locationParam.location.coords.latitude,
+                lng: locationParam.location.coords.longitude
+            },
+            user: userId.replace(/['"]/g, '') ,
+            severity: null
+        }
         try {
-            const res = await apiService.post(newAlert)
-            if (res.ok) {
-                return setSuccessful(true)
-            } else {
+            const res = await apiService.post('alerts', newAlert)
+            if (res.status) {
                 setErrorStatus(res.status)
                 setError(true)
-                
+            } else {
+                return setSuccessful(true)
             }
             //return console.log(res);
         } catch {
@@ -160,7 +169,7 @@ const styles = StyleSheet.create({
         justifyContent:'start',
         alignItems: 'center',
         backgroundColor: 'white',
-        paddingButtom: '4%',
+        paddingBottom: '4%',
         paddingTop:'4%'
     },
     container: {

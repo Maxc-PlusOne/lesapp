@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StatusBar } from "expo-status-bar"
+import { StatusBar } from "expo-status-bar";
 import Icon from 'react-native-ico-material-design';
 import {View, StyleSheet } from 'react-native'
 import { NavigationContainer } from "@react-navigation/native";
@@ -12,15 +12,27 @@ import InitialScreen from "../screens/InitialScreen";
 import OTPScreen from "../screens/OTPScreen";
 import Capture from "../components/Capture";
 import AlertViewScreen from "../screens/AlertViewScreen";
+import storageService from "../utils/storageService";
+import Loading from "../components/ActivityIndicator";
 
 export default function App() {
-    const [isSignedIn, setIsSignedIn] = React.useState(true);
-    const updateIsSignedIn = (value) => {
-        setIsSignedIn(value)
-    };
-    const OTPScreenWrapper = (props) => <OTPScreen {...props} updateStatus={updateIsSignedIn} />;
+    const [isSignedIn, setIsSignedIn] = React.useState('pending');
     const Tab = createBottomTabNavigator();
     const Stack = createStackNavigator();
+    const updateIsSignedIn = () => {
+        checkSignInStatus()
+    };
+    const OTPScreenWrapper = (props) => <OTPScreen {...props} updateStatus={updateIsSignedIn} />;
+    const checkSignInStatus = () => {
+        storageService.get('isSignedIn').then(value => {
+            setIsSignedIn(value);
+        });
+    };
+
+    React.useEffect(() => {
+        checkSignInStatus()
+    }, [])
+
 
     //MainApp Stack for navigation 
     function MainAppStack() {
@@ -29,6 +41,7 @@ export default function App() {
                 <Stack.Screen name='Main Screen' component={MainScreen} />
                 <Stack.Screen name='Capture' component={Capture} />
                 <Stack.Screen name='AlertView' component={AlertViewScreen} />
+                <Stack.Screen name='Welcome' component={InitialSetup} />
             </Stack.Navigator>
         )
     }
@@ -92,9 +105,17 @@ export default function App() {
         );
     }
 
+
+
+
     return (
+        console.log('isSignedIn',isSignedIn),
         <NavigationContainer independent={true}>
-            {isSignedIn ? <MainAppStack /> : <InitialSetup />}
+                {
+                    isSignedIn === 'true' ? (<MainAppStack />)
+                        : isSignedIn === 'pending' ? (<Loading />)
+                            : (<InitialSetup/>)
+                }
         </NavigationContainer>
     )
 }

@@ -3,51 +3,94 @@ import {
     View, Text, StyleSheet, TextInput, Dimensions,
     Pressable, Image, Keyboard, KeyboardAvoidingView, Platform
 } from 'react-native';
+import storageService from "../utils/storageService";
+import { apiService } from "../utils/apiService";
+import Loading from "../components/ActivityIndicator";
+import { CommonActions } from '@react-navigation/native';
 
 export default function Setup({ navigation,updateStatus,route}) {
     const [otp, setOtp] = React.useState('');
+    const [otpStatus, setOtpStatus] = React.useState(false);
     const {phoneNumber} = route.params;
     const { name } = route.params;
     const [errorMessage, setErrorMessage] = React.useState('');
-    const onConfirmPress = () => {
+    const [loading, setLoading] = React.useState(false);
 
-        if (otp.length === 4) {
-            updateStatus(true);
+
+
+    async function checkOTP() {
+        if (otp === '1234') {
+            //Here send OTP to API to validate and return boolean
+            return setOtpStatus(true);
         } else {
-            setErrorMessage('Please enter a valid OTP.');
+            setErrorMessage('Please enter a valid OTP.')
         }
     }
 
-    return (
-        <KeyboardAvoidingView
-            style={styles.container}
-            behavior={Platform.OS === "ios" ? "padding" : "height"}
-            keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}>
+    async function signUp() {
+        setLoading(true),
+        await checkOTP()
+        const user = {
+            name: name,
+            phone: phoneNumber,
+        }
 
-            <Pressable onPress={Keyboard.dismiss} style={styles.container}>
-                <Text style={styles.title}> Verify your phone number </Text>
-                <Text style={styles.subtitle}> Type the 4-digit OTP that was sent to {phoneNumber}</Text>
-                <Pressable style={{ marginTop: '2%' }}>
-                    <Text style={{ color: '#5B636C'}}> Didn't get code? </Text>
+        try {
+            if (otpStatus) {
+                const res = await apiService.post('user', user)
+                storageService.save('isSignedIn', true)
+                await storageService.save('userId', res.id)
+                updateStatus()
+                navigation.dispatch(
+                    CommonActions.reset({
+                        index: 0,
+                        routes: [{ name: 'Main Screen' }],
+                    })
+                )
+            }
+        } catch {
+
+        } finally {
+            setLoading(false)
+        }
+    }
+    
+    
+    //Output 
+    if (loading) {
+        return <Loading />
+    } else {
+        return (
+            <KeyboardAvoidingView
+                style={styles.container}
+                behavior={Platform.OS === "ios" ? "padding" : "height"}
+                keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}>
+
+                <Pressable onPress={Keyboard.dismiss} style={styles.container}>
+                    <Text style={styles.title}> Verify your phone number </Text>
+                    <Text style={styles.subtitle}> Type the 4-digit OTP that was sent to {phoneNumber}</Text>
+                    <Pressable style={{ marginTop: '2%' }}>
+                        <Text style={{ color: '#5B636C' }}> Didn't get code? </Text>
+                    </Pressable>
+                    <View style={styles.formContainer}>
+                        <TextInput style={styles.inputBox} maxLength={4}
+                            onChangeText={(value) => { setOtp(value) }}
+                            value={otp}
+                            keyboardType='numeric'
+                        />
+
+                    </View>
+                    {errorMessage ? <Text style={{ color: 'red' }}>{errorMessage}</Text> : null}
+                    <Pressable style={styles.btnConfirm} onPress={signUp}>
+                        <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 24 }}>Confirm</Text>
+                    </Pressable>
+                    <Pressable style={styles.btnChangeNum} onPress={() => navigation.goBack()} >
+                        <Text style={{ color: '#5B636C', fontWeight: 'bold', fontSize: 16 }}>edit phone number</Text>
+                    </Pressable>
                 </Pressable>
-                <View style={styles.formContainer}>
-                    <TextInput style={styles.inputBox} maxLength={4}
-                        onChangeText={(value) => setOtp(value)}
-                        value={otp }
-                        keyboardType='numeric'
-                    />
-                   
-                </View>
-                {errorMessage ? <Text style={{color:'red'}}>{errorMessage}</Text> : null}
-                <Pressable style={styles.btnConfirm} onPress={onConfirmPress}>
-                    <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 24 }}>Confirm</Text>
-                </Pressable>
-                <Pressable style={styles.btnChangeNum} onPress={() => navigation.goBack()} >
-                    <Text style={{ color: '#5B636C', fontWeight: 'bold', fontSize: 16 }}>edit phone number</Text>
-                </Pressable>
-            </Pressable>
             </KeyboardAvoidingView>
-    );
+        )
+    }
 }
 
 const screenWidth = Dimensions.get('window').width;
