@@ -5,12 +5,30 @@ import * as Location from 'expo-location';
 import { useNavigation } from '@react-navigation/native';
 import Capture from '../components/Capture';
 import Loading from '../components/ActivityIndicator';
+import { locationService } from '../utils/locationService';
 
 export default function HomeScreen() {
     const [BtnColor, setBtnColor] = useState('red');
     const [isActivated, setIsActivated] = useState(false);
     const [BtnText, setBtnText] = useState('Send SOS');
     const navigation = useNavigation();
+    const [address, setAddress] = useState('');
+
+    //Reverse Geocoding 
+    async function fetchLocation(lat,lng) {
+        const res = await locationService.getLocation(lat, lng);
+        const addressComponents = {};
+        try {
+            res.results[0].address_components.forEach(component => {
+                component.types.forEach(type => {
+                    addressComponents[type] = component.long_name;
+                });
+            });
+            return setAddress(addressComponents)
+        } catch {
+
+        }
+    }
 
     // Location (GPT)//
     const [location, setLocation] = useState(null);
@@ -27,6 +45,12 @@ export default function HomeScreen() {
             setLocation(location);
         })();
     }, []);
+
+    useEffect(() => {
+        if (location) {
+            fetchLocation(location.coords.latitude, location.coords.longitude);
+        }
+    }, [location]);
 
     if (errorMsg) {
         return (
@@ -96,9 +120,9 @@ export default function HomeScreen() {
 
     return (
         <View style={styles.container}>
-            <View style={styles.infoBar}>
-                <Text style={styles.infoText}>Showing current address here</Text>
-            </View>
+            <Pressable onPress={fetchLocation} style={styles.infoBar}>
+                <Text style={styles.infoText}>{address['street_number']} {address['route']}, {address['locality']}, {address['postal_code']}</Text>
+            </Pressable>
             <Pressable onPress={sendSOS} style={{
                 zIndex: 5,
                 backgroundColor:BtnColor,
