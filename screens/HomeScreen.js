@@ -6,9 +6,10 @@ import { useNavigation } from '@react-navigation/native';
 import Capture from '../components/Capture';
 import Loading from '../components/ActivityIndicator';
 import { locationService } from '../utils/locationService';
+import { globalColors } from '../app/styles';
 
 export default function HomeScreen() {
-    const [BtnColor, setBtnColor] = useState('red');
+    const [BtnColor, setBtnColor] = useState(globalColors.primary.default);
     const [isActivated, setIsActivated] = useState(false);
     const [BtnText, setBtnText] = useState('Send SOS');
     const navigation = useNavigation();

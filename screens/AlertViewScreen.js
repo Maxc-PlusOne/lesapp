@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { View, Text, StyleSheet, Alert, Pressable, ScrollView } from 'react-native';
 import { apiService } from '../utils/apiService';
-import { globalStyles } from '../app/styles';
+import { globalColors, globalStyles } from '../app/styles';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import Loading from '../components/ActivityIndicator';
 import RNPickerSelect from 'react-native-picker-select';
@@ -134,7 +134,7 @@ const pickerSelectStyles = StyleSheet.create({
         fontSize: 16,
         paddingVertical: 12,
         paddingHorizontal: 10,
-        backgroundColor:'grey',
+        backgroundColor: globalColors.primary.default,
         borderRadius: 10,
         color: 'black', 
         top:4

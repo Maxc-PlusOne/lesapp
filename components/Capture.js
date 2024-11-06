@@ -1,7 +1,7 @@
 import { CameraView, CameraType, useCameraPermissions} from 'expo-camera';
 import { useState, useRef } from 'react';
-import { Button, StyleSheet, Text, Pressable, View, Modal, Image, TextInput } from 'react-native';
-import { globalStyles } from '../app/styles';
+import { Button, StyleSheet, Text, Pressable, View, Modal, Image, TextInput, SafeAreaView } from 'react-native';
+import { RNPickerSelectStyles, globalColors, globalStyles } from '../app/styles';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useNavigation } from '@react-navigation/native';
 import { apiService } from '../utils/apiService';
@@ -9,6 +9,7 @@ import Loading from './ActivityIndicator';
 import Success from './Success';
 import Oops from './Oops';
 import storageService from '../utils/storageService';
+import RNPickerSelect from 'react-native-picker-select';
 
 
 export default function Capture({ route }) {
@@ -109,7 +110,7 @@ export default function Capture({ route }) {
         return <Oops status={errorStatus} />
     } else {
         return (
-            <View style={styles.container}>
+            <SafeAreaView style={styles.container}>
                 {/* Modal to display photo preview */}
                 <Modal
                     animationType="slide"
@@ -117,25 +118,50 @@ export default function Capture({ route }) {
                     visible={modalVisible}
                     onRequestClose={toggleModal}
                 >
-                    <View style={styles.modalView}>
+                    <Pressable style={styles.modalView}>
 
                         {loading ? <Loading /> : (<>
-                            <View style={{ flex: 0.4, justifyContent: 'start', alignItems: 'center', flexDirection: 'row', }}>
-                                <Text>Preview</Text>
+                            <View style={styles.header}>
                                 <Pressable onPress={toggleModal}>
-                                    <MaterialIcons name="close" size={36}
-                                        style={{ color: 'red', marginTop: 0, left: 0 }} />
+                                {/*    <MaterialIcons name='arrow-back-ios-new' size={24} style={styles.headerIcon} />*/}
+                                </Pressable>
+                                <Text style={globalStyles.title}>Preview</Text>
+                                <Pressable onPress={() => toggleModal, closeCamera}>
+                                {/*    <MaterialIcons name="close" size={28} style={styles.headerIcon} />*/}
                                 </Pressable>
                             </View>
                             <Image source={{ uri: photoUri }} style={globalStyles.imagePreview} />
-                            <Text style={globalStyles.inputLabel}>Description (optional)</Text>
-                            <TextInput style={globalStyles.input} />
-                            <Pressable style={globalStyles.btnPrimary} onPress={submitSOS}>
-                                <Text style={globalStyles.btnText}>Send SOS</Text>
+                            <View>
+                                <Text style={globalStyles.inputLabel}>Description (optional)</Text>
+                                <RNPickerSelect
+                                    style={RNPickerSelectStyles}
+                                    onValueChange={(value)=>value }
+                                    items={[
+                                        {label:'Car Accident', value : 'Car'},
+                                        {label:'Slip / Fall', value : 'S/L'},
+                                        {label:'Heart Attack / Stroke', value : 'Heart & Stroke'},
+                                        {label:'Burns / Chemical Exposure', value : 'Burns'},
+                                        {label:'Other', value : 'Other'},
+                                    ] }
+                                />
+                            </View>
+                            <Pressable style={[globalStyles.btnSecondary]} onPress={toggleModal}>
+                                <Text style={[globalStyles.btnText, { color: globalColors.secondary.xstrong }]}>Retake</Text>
                             </Pressable>
+                            <View style={styles.btnContainer}>
+                                <Pressable
+                                    style={[globalStyles.btnSecondary, { width: '50%' }]}
+                                    onPress={toggleModal, closeCamera}
+                                >
+                                    <Text style={[globalStyles.btnText, { color: globalColors.secondary.xstrong }]}>Cancel</Text>
+                                </Pressable>
+                                <Pressable style={[globalStyles.btnPrimary, {width:'50%'}]} onPress={submitSOS}>
+                                    <Text style={globalStyles.btnText}>Send SOS</Text>
+                                </Pressable>
+                            </View>
                         </>
                         )}
-                    </View>
+                    </Pressable>
                 </Modal>
                 {/*Camera View to capture photo*/}
                 <CameraView
@@ -158,7 +184,7 @@ export default function Capture({ route }) {
                         </View>
                     </View>
                 </CameraView>
-            </View>
+            </SafeAreaView>
         );
     }
 }
@@ -166,11 +192,12 @@ export default function Capture({ route }) {
 const styles = StyleSheet.create({
     modalView: {
         flex: 1,
+        flexDirection: 'column',
         justifyContent:'start',
         alignItems: 'center',
         backgroundColor: 'white',
         paddingBottom: '4%',
-        paddingTop:'4%'
+        paddingTop:'8%'
     },
     container: {
         flex: 1,
@@ -224,6 +251,26 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: 'white',
     },
+    header: {
+        marginTop:24,
+        alignItems: 'center',
+        flexDirection: 'row',
+        justifyContent: 'space-between',  // This spaces items in the row
+    width: '80%',  // Ensure the width spans the full container if needed
+
+    },
+    btnContainer: {
+        position:'absolute',
+        bottom: '4%',
+        justifyContent: 'center',
+        flexDirection: 'row',
+        width: '85%',
+        gap:'5%'
+
+    },
+    headerIcon: {
+        color: 'black'
+    }
     
 
 });
