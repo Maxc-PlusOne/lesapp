@@ -37,8 +37,8 @@ export default function App() {
     //MainApp Stack for navigation 
     function MainAppStack() {
         return (
-            <Stack.Navigator screenOptions={{ headerShown: false, tabBarShown: false, initialRoute: 'Main Screen' }}>
-                <Stack.Screen name='Main Screen' component={MainScreen} />
+            <Stack.Navigator screenOptions={{ headerShown: false, tabBarShown: false, initialRouteName: 'Main' }}>
+                <Stack.Screen name='Main' component={MainScreen} />
                 <Stack.Screen name='Capture' component={Capture} />
                 <Stack.Screen name='AlertView' component={AlertViewScreen} />
                 <Stack.Screen name='Welcome' component={InitialSetup} />

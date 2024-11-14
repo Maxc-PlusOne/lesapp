@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import Capture from '../components/Capture';
 import Loading from '../components/ActivityIndicator';
 import { locationService } from '../utils/locationService';
-import { globalColors } from '../app/styles';
+import { globalColors, globalStyles } from '../app/styles';
 
 export default function HomeScreen() {
     const [BtnColor, setBtnColor] = useState(globalColors.primary.default);
@@ -66,7 +66,7 @@ export default function HomeScreen() {
         );
     }
 
-    //Confirmation Popup (Alert)
+    //Confirmation Popup (Alert) //Delete
     function showAlert(action) {
 
         const onPress = () => {
@@ -121,10 +121,10 @@ export default function HomeScreen() {
 
     return (
         <View style={styles.container}>
-            <Pressable onPress={fetchLocation} style={styles.infoBar}>
-                <Text style={styles.infoText}>{address['street_number']} {address['route']}, {address['locality']}, {address['postal_code']}</Text>
+            <Pressable onPress={fetchLocation} style={[styles.infoBar, globalStyles.shadow]}>
+                <Text style={[styles.infoText]}>{address['street_number']} {address['route']}, {address['locality']}, {address['postal_code']}</Text>
             </Pressable>
-            <Pressable onPress={sendSOS} style={{
+            <Pressable onPress={sendSOS} style={[{
                 zIndex: 5,
                 backgroundColor:BtnColor,
                 width: '80%',
@@ -132,11 +132,11 @@ export default function HomeScreen() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 borderRadius: 35,
-                bottom: '14%',
                 position: 'absolute',
+                bottom: 100
 
-            }}>
-                <Text style={{fontSize:24,color:'white', textStyle:'bold' }}>{BtnText}</Text>
+            }, globalStyles.shadow]}>
+                <Text style={[{ fontSize: 24, color: 'white', textStyle: 'bold' }]}>{BtnText}</Text>
             </Pressable>
 
             <MapView
@@ -167,7 +167,8 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent:'center',
-        zIndex: 1
+        zIndex: 1,
+        flexDirection: 'column'
     },
 
     infoBar: {
@@ -180,23 +181,18 @@ const styles = StyleSheet.create({
         borderColor: '#DB222A',
         borderWidth: 0,
 
-        // iOS shadow
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
 
         // Android shadow
         elevation: 5,
         justifyContent: 'center',
         alignItems: 'center',
-        margin: '5%',
-        top: 0,
+        top: 16,
     },
 
     infoText: {
         color: '#5B636C',
         fontSize: 16,
+        textAlign:'center',
     },
 
     map: {

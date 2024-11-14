@@ -32,7 +32,7 @@ export default function AlertsScreen() {
 
     // Call once after the component mounts
     react.useEffect(() => {
-        setTimeout(getData,3000);
+        getData()
     }, []);
 
     function viewItem(value) {

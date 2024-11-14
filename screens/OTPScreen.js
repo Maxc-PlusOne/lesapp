@@ -7,54 +7,86 @@ import storageService from "../utils/storageService";
 import { apiService } from "../utils/apiService";
 import Loading from "../components/ActivityIndicator";
 import { CommonActions } from '@react-navigation/native';
+import { globalStyles } from "../app/styles";
 
 export default function Setup({ navigation,updateStatus,route}) {
     const [otp, setOtp] = React.useState('');
-    const [otpStatus, setOtpStatus] = React.useState(false);
     const {phoneNumber} = route.params;
     const { name } = route.params;
     const [errorMessage, setErrorMessage] = React.useState('');
     const [loading, setLoading] = React.useState(false);
 
-
-
-    async function checkOTP() {
+    function validate() {
         if (otp === '1234') {
-            //Here send OTP to API to validate and return boolean
-            return setOtpStatus(true);
+            return true;
         } else {
             setErrorMessage('Please enter a valid OTP.')
+            return false;
         }
     }
 
+    ////// API request funtion /////
+
+    async function confirmOTP() {
+        const isValid = validate();
+        if (isValid) {
+            setErrorMessage('');
+            setLoading(true);
+            const data = { OTP: otp, phone: phoneNumber };
+           
+            try {
+                const res = await apiService.post('', data);
+                if (res.status) {
+                    setErrorMessage('The OTP you provided is incorrect, try again.');
+                } else {
+                    // await storageService.save('userId', res.id);
+                    await storageService.save('token', res.token);
+                    await storageService.save('isSignedIn', true);
+                    updateStatus();
+                    navigation.dispatch(
+                        CommonActions.reset({
+                            index: 0,
+                            routes: [{ name: 'Main' }],
+                        })
+                    );
+                }
+
+            } catch (error) {
+                setErrorMessage('Failed to verify phone number, Please try again.');
+            } finally {
+                setLoading(false);
+            }
+        }
+    }
+    ////////////////////////////////
     async function signUp() {
-        setLoading(true),
-        await checkOTP()
+        setErrorMessage('');
+        setLoading(true);
+        const isValid = validate();
         const user = {
             name: name,
             phone: phoneNumber,
         }
 
         try {
-            if (otpStatus) {
+            if (isValid) {
                 const res = await apiService.post('user', user)
                 storageService.save('isSignedIn', true)
-                await storageService.save('userId', res.id)
+                await storageService.save('userId', res.id) 
                 updateStatus()
                 navigation.dispatch(
                     CommonActions.reset({
                         index: 0,
-                        routes: [{ name: 'Main Screen' }],
+                        routes: [{ name: 'Main' }],
                     })
-                )
+                );
             }
-        } catch {
-
+        } catch (error) {
+            setErrorMessage('Failed to verify phone number, Please try again.')
         } finally {
             setLoading(false)
         }
     }
-    
     
     //Output 
     if (loading) {
@@ -81,7 +113,7 @@ export default function Setup({ navigation,updateStatus,route}) {
 
                     </View>
                     {errorMessage ? <Text style={{ color: 'red' }}>{errorMessage}</Text> : null}
-                    <Pressable style={styles.btnConfirm} onPress={signUp}>
+                    <Pressable style={globalStyles.btnPrimary} onPress={signUp}>
                         <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 24 }}>Confirm</Text>
                     </Pressable>
                     <Pressable style={styles.btnChangeNum} onPress={() => navigation.goBack()} >

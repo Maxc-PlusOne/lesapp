@@ -145,8 +145,9 @@ export default function Capture({ route }) {
                                     ] }
                                 />
                             </View>
-                            <Pressable style={[globalStyles.btnSecondary]} onPress={toggleModal}>
-                                <Text style={[globalStyles.btnText, { color: globalColors.secondary.xstrong }]}>Retake</Text>
+                            <Pressable style={[globalStyles.btnPrimary, {flexDirection:'row'}]} onPress={toggleModal}>
+                                <MaterialIcons name='camera-alt' size={24} color='white' />
+                                <Text style={[globalStyles.btnText]}>Retake</Text>
                             </Pressable>
                             <View style={styles.btnContainer}>
                                 <Pressable
@@ -155,7 +156,7 @@ export default function Capture({ route }) {
                                 >
                                     <Text style={[globalStyles.btnText, { color: globalColors.secondary.xstrong }]}>Cancel</Text>
                                 </Pressable>
-                                <Pressable style={[globalStyles.btnPrimary, {width:'50%'}]} onPress={submitSOS}>
+                                <Pressable style={[globalStyles.btnPrimary, { width: '50%' }]} onPress={submitSOS}>
                                     <Text style={globalStyles.btnText}>Send SOS</Text>
                                 </Pressable>
                             </View>

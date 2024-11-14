@@ -31,7 +31,10 @@ export const globalStyles = StyleSheet.create({
         height: 60,
         paddingLeft: 20,
         fontSize: 16,
+        marginVertical: '1%'
     },
+
+
     btnPrimary: {
         marginVertical: '2%',
         alignItems: 'center',
@@ -40,7 +43,8 @@ export const globalStyles = StyleSheet.create({
         borderRadius: 15,
         width: width * 0.85,
         height: 60,
-        paddingHorizontal:'4%',
+        gap:4,
+        paddingHorizontal: '4%',
     },    
     btnSecondary: {
         marginVertical: '2%',
@@ -53,6 +57,16 @@ export const globalStyles = StyleSheet.create({
         paddingHorizontal: '4%',
 
     },
+    shadow: {
+        // iOS shadow
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+
+        // Android shadow
+
+    },
     btnText: {
         color: 'white',
         fontWeight: 'bold',
@@ -60,7 +74,8 @@ export const globalStyles = StyleSheet.create({
     },
     inputLabel: {
         color: globalColors.secondary.strong,
-        left: 0,
+        left: 8,
+        button: 8
     },
     imagePreview: {
         marginVertical: '4%',
@@ -87,12 +102,11 @@ export const RNPickerSelectStyles = StyleSheet.create({
         fontSize: 16,
         paddingVertical: 12,
         paddingHorizontal: 10,
-        backgroundColor: globalColors.secondary.default,
+        backgroundColor: globalColors.primary.default,
         borderRadius: 10,
-        color: 'black',
+        color: 'white',
         top: 2,
-        borderWidth: 2, 
-        borderColor: globalColors.secondary.strong 
+
     },
     inputAndroid: {
         alignSelf: 'center',
