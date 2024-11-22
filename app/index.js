@@ -1,7 +1,7 @@
 import * as React from "react";
 import { StatusBar } from "expo-status-bar";
 import Icon from 'react-native-ico-material-design';
-import {View, StyleSheet } from 'react-native'
+import {View, StyleSheet, Text} from 'react-native'
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from '@react-navigation/stack';
@@ -50,30 +50,42 @@ export default function App() {
     function MainScreen() {
         const sOptions = ({ route }) => ({
             headerShown: false,
+            tabBarShowLabel: false,
             tabBarStyle: {
                 position: "absolute",
                 marginBottom: 0,
+                height:80
             },
+
 
             tabBarIcon: ({ focused, color, size }) => {
                 let iconName;
+                let label;
 
 
                 if (route.name === "Home") {
                     iconName = 'home-button';
+                    label = 'Home';
                 } else if (route.name === "Alerts") {
                     iconName = 'turn-notifications-on-button';
+                    label='Alerts'
                 } else if (route.name === "Profile") {
-                    iconName = 'user-shape'
+                    iconName = 'user-shape';
+                    label='Profile'
                 }
-                return <Icon name={iconName} color={color} />;
+                return (
+                    <View style={{ alignItems: 'center', justifyContent: 'center', gap:4 }}>
+                        <Icon name={iconName} color={color} />
+                        <Text>{label}</Text>
+                    </View>
+                    
+                )
             },
 
             tabBarInactiveTintColor: "black",
             tabBarActiveTintColor: "red",
             tabBarLabelStyle: {
                 fontSize: 12,
-                marginBottom: -20,
             }
         })
 
@@ -122,7 +134,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
     tabBar: {
-        align: "center"
+        align: "center",
     },
     container: {
         flex: 1,

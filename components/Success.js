@@ -19,7 +19,7 @@ const Success = ({ title = 'Success!', message = 'Your request has been successf
         <View style={styles.container}>
             {/* Animated Icon */}
             <Animated.View style={{ transform: [{ scale: scaleValue }] }}>
-                <MaterialIcons name="check-circle" size='150%' color="green" />
+                <MaterialIcons name="check-circle" size={150} color="green" />
             </Animated.View>
             <Text style={styles.title}>{title}</Text>
             <Text style={styles.message}>{message}</Text>

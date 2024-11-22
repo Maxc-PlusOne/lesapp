@@ -194,11 +194,9 @@ const styles = StyleSheet.create({
     modalView: {
         flex: 1,
         flexDirection: 'column',
-        justifyContent:'start',
+        justifyContent: 'space-between',
         alignItems: 'center',
         backgroundColor: 'white',
-        paddingBottom: '4%',
-        paddingTop:'8%'
     },
     container: {
         flex: 1,
@@ -236,14 +234,14 @@ const styles = StyleSheet.create({
         width: 140,
         height: 60,
         backgroundColor: 'white',
-        borderRadius: '100%',
+        borderRadius: 100,
         marginHorizontal: '16%',
     },
     btnInner: {
         width: '90%',
         height: '90%',
         backgroundColor: 'white',
-        borderRadius: '100%',
+        borderRadius: 100,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -253,7 +251,7 @@ const styles = StyleSheet.create({
         color: 'white',
     },
     header: {
-        marginTop:24,
+        marginTop:16,
         alignItems: 'center',
         flexDirection: 'row',
         justifyContent: 'space-between',  // This spaces items in the row
@@ -261,12 +259,10 @@ const styles = StyleSheet.create({
 
     },
     btnContainer: {
-        position:'absolute',
-        bottom: '4%',
         justifyContent: 'center',
         flexDirection: 'row',
         width: '85%',
-        gap:'5%'
+        gap:5
 
     },
     headerIcon: {

@@ -64,7 +64,7 @@ export const globalStyles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
 
-        // Android shadow
+        // Android shadows
 
     },
     btnText: {
@@ -80,8 +80,10 @@ export const globalStyles = StyleSheet.create({
     imagePreview: {
         marginVertical: '4%',
         width: '85%',
-        height: 380,
+        height: '45%',
         borderRadius: 15,
+        flexGrow: 5,
+        flexShrink:5
     },
     title: {
         size: 48,
@@ -100,6 +102,7 @@ export const RNPickerSelectStyles = StyleSheet.create({
         alignSelf: 'center',
         width: width*0.85,
         fontSize: 16,
+        borderRadius:15,
         paddingVertical: 12,
         paddingHorizontal: 10,
         backgroundColor: globalColors.primary.default,
@@ -110,13 +113,14 @@ export const RNPickerSelectStyles = StyleSheet.create({
     },
     inputAndroid: {
         alignSelf: 'center',
-        width: "85%",
-        fontSize: 16,
+        width: width * 0.85,
+        borderRadius:100,
+        paddingVertical: 12,
         paddingHorizontal: 10,
-        paddingVertical: 8,
-        borderRadius: 10,
-        backgroundColor: globalColors.secondary.default,
-        color: 'black',
+        backgroundColor: globalColors.primary.default,
+        borderWidth:2,
+        color: 'white',
+        top: 2,
 
     },
 });

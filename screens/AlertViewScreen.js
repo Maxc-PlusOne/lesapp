@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { View, Text, StyleSheet, Alert, Pressable, ScrollView } from 'react-native';
 import { apiService } from '../utils/apiService';
-import { globalColors, globalStyles } from '../app/styles';
+import { RNPickerSelectStyles, globalColors, globalStyles } from '../app/styles';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import Loading from '../components/ActivityIndicator';
 import RNPickerSelect from 'react-native-picker-select';
@@ -69,7 +69,7 @@ export default function AlertViewScreen({ route }) {
                     <Text style={[globalStyles.text, { color: 'grey' }]}>SEVERITY LEVEL</Text>
                     <RNPickerSelect
                         disabled={false}
-                        style={pickerSelectStyles}
+                        style={RNPickerSelectStyles}
                         onValueChange={(value) => console.log(value)}
                         items={[
                             { label: 'Level 1', value: '1' }, //change these values to match API 

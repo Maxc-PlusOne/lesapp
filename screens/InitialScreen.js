@@ -43,11 +43,16 @@ export default function Setup({navigation}) {
     }
 
     function validate() {
+        const isNumbersOnly = (input) => /^\d+$/.test(input);
         if (!name) {
             setErrorMessage('Name cannot be empty!');
             return false;
         } else if (phoneSuffix.length !== 9) {
             setErrorMessage('Please enter a valid phone number.');
+            return false;
+        }
+        else if (!isNumbersOnly(phoneSuffix)) {
+            setErrorMessage('Phone number contains non-numeric character')
             return false;
         } else {    
             setErrorMessage();
@@ -70,23 +75,26 @@ export default function Setup({navigation}) {
           
             <View style={styles.formContainer}>
                     <View>
-                        <Text style={globalStyles.inputLabel}>Name</Text>
+                        <Text style={globalStyles.inputLabel}>Full Name</Text>
                         <TextInput style={[globalStyles.input]} maxLength={20}
                             onChangeText={(value) => {
                                 setName(value)
-                            }} value={name} />
+                            }} value={name}
+                            placeholder='Enter your name and surname'
+
+                        />
                 </View>
                     <View style={{ paddingTop: 4}}>
                         <Text style={globalStyles.inputLabel}>Mobile Number</Text>
                         <View style={styles.comboBox}>
-                            <TextInput style={[globalStyles.input, { width: '25%', justifyContent: 'center' }]} maxLength={10} keyboardType='numeric'
-                                onChangeText={(value) => { setPhonePreffix(value) }} value='+27' editable='false' />
-                            <TextInput style={[globalStyles.input, { width: '75%' }]} maxLength={9} keyboardType='numeric'
+                            <TextInput disabled='true' style={[globalStyles.input, { width: '20%', justifyContent: 'center' }]} maxLength={10} keyboardType='numeric'
+                                onChangeText={(value) => { setPhonePreffix(value) }} value='+27' />
+                            <TextInput style={[globalStyles.input, { width: '80%' }]} maxLength={9} keyboardType='numeric'
                                 onChangeText={(value) => { setPhoneSuffix(value) }} value={phoneSuffix} />
                         </View>
                     </View>
                     {errorMessage ? <Text style={{ marginTop: '2%', color: 'red' }}>{errorMessage}</Text> : null}
-                    <Pressable style={[globalStyles.btnPrimary, { marginVertical: '4%' }]} onPress={nextPress}>
+                    <Pressable style={[globalStyles.btnPrimary]} onPress={nextPress}>
                     <Text style={{ fontSize: 24, color: 'white',fontWeight:'bold' }}> Next </Text>
                 </Pressable>
             </View>
@@ -104,12 +112,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'white',
-        gap:16
     },
     formContainer: {
         width: '100%',
         alignItems: 'center',
-        marginVertica: '2%',
+        marginVertical: '2%',
     },
     input: {
         borderColor: '#808A93',
@@ -135,7 +142,7 @@ const styles = StyleSheet.create({
     },
     comboBox: {
         flexDirection: 'row',
-        gap: '5%',
+        gap: 5,
         width: screenWidth * 0.85,
         justifyContent:'space-evenly'
 

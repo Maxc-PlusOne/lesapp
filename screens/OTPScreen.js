@@ -100,12 +100,12 @@ export default function Setup({ navigation,updateStatus,route}) {
 
                 <Pressable onPress={Keyboard.dismiss} style={styles.container}>
                     <Text style={styles.title}> Verify your phone number </Text>
-                    <Text style={styles.subtitle}> Type the 4-digit OTP that was sent to {phoneNumber}</Text>
-                    <Pressable style={{ marginTop: '2%' }}>
+                    <Text style={styles.subtitle}> Type the 6-digit OTP that was sent to {phoneNumber}</Text>
+                    <Pressable>
                         <Text style={{ color: '#5B636C' }}> Didn't get code? </Text>
                     </Pressable>
                     <View style={styles.formContainer}>
-                        <TextInput style={styles.inputBox} maxLength={4}
+                        <TextInput style={styles.inputBox} maxLength={6}
                             onChangeText={(value) => { setOtp(value) }}
                             value={otp}
                             keyboardType='numeric'
@@ -174,7 +174,6 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         width: screenWidth * 0.85,
         height: 40,
-        marginTop: '2%',
     },
     title: {
         fontSize: 32,
