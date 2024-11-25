@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     formContainer: {
         width: '100%',
         alignItems: 'center',
-        marginVertical: '2%',
+        marginVertical: '8%',
     },
     input: {
         borderColor: '#808A93',
@@ -132,13 +132,13 @@ const styles = StyleSheet.create({
         left:'4%'
     },
     title: {
-        fontSize: 32,
+        fontSize: 24,
         alignContent: 'center',
     },
     img: {
         alignSelf: 'center',
-        width:230,
-        height: 100,
+        width:120,
+        height: 50,
     },
     comboBox: {
         flexDirection: 'row',

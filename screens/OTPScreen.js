@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 32,
-        paddingTop:'24%',
+        paddingTop:'16%',
         alignContent: 'center',
         paddingHorizontal: '16%',
         fontWeight: 'bold',
@@ -185,7 +185,7 @@ const styles = StyleSheet.create({
     },
     subtitle: {
         fontSize: 16,
-        paddingTop:'16%',
+        paddingTop:'2%',
         alignContent: 'center',
         paddingHorizontal: '16%',
         fontWeight: 'bold',
