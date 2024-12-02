@@ -5,12 +5,14 @@ import {
 } from 'react-native';
 import { globalStyles } from "../app/styles";
 import { apiService } from "../utils/apiService";
+import Loading from "../components/ActivityIndicator";
 
 export default function Setup({navigation}) {
     const [name, setName] = React.useState('');
     const [phonePreffix, setPhonePreffix] = React.useState('+27');
     const [phoneSuffix, setPhoneSuffix] = React.useState('');
     const [errorMessage, setErrorMessage] = React.useState('');
+    const [loading, setLoading] = React.useState(false);
 
     /////// For Real API /////
     async function requestOTP() { 
@@ -19,16 +21,20 @@ export default function Setup({navigation}) {
         const phoneNumber = phonePreffix + phoneSuffix;
         const user = { name: name, phone: phoneNumber }
         if (isValid) {
+            setLoading(true)
             try {
-                const res = await apiService.post('newUser', user)
-                if (res.status) {
-                    console.log('Error Status: ', res.status)
-                    setErrorMessage('Check your connection & try again.')
+                const res = await apiService.auth.post('signup', user)
+                if (res.error) {
+                    console.log(res.error)
+                    setErrorMessage(res.error)
                 } else {
                     navigation.navigate('OTP', { phoneNumber, name });
                 }
             } catch (error) {
                 setErrorMessage('Something went wrong, Please try again.')
+            }
+            finally {
+                setLoading(false)
             }
         }
     } 
@@ -62,18 +68,21 @@ export default function Setup({navigation}) {
 
     }
 
-    return (
-        <KeyboardAvoidingView
+    if (loading) {
+        return <Loading />
+    } else {
+        return (
+            <KeyboardAvoidingView
             style={styles.container}
             behavior={Platform.OS === "ios" ? "padding" : "height"}
             keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20} // Adjust if needed
         >
-        <Pressable onPress={Keyboard.dismiss} style={styles.container}>
+            <Pressable onPress={Keyboard.dismiss} style={styles.container}>
 
                 <Image style={styles.img} source={require('../assets/images/BLOKI.png')} />
-            <Text style={styles.title}> Getting you started.</Text>
-          
-            <View style={styles.formContainer}>
+                <Text style={styles.title}> Getting you started.</Text>
+
+                <View style={styles.formContainer}>
                     <View>
                         <Text style={globalStyles.inputLabel}>Full Name</Text>
                         <TextInput style={[globalStyles.input]} maxLength={20}
@@ -83,8 +92,8 @@ export default function Setup({navigation}) {
                             placeholder='Enter your name and surname'
 
                         />
-                </View>
-                    <View style={{ paddingTop: 4}}>
+                    </View>
+                    <View style={{ paddingTop: 4 }}>
                         <Text style={globalStyles.inputLabel}>Mobile Number</Text>
                         <View style={styles.comboBox}>
                             <TextInput disabled='true' style={[globalStyles.input, { width: '20%', justifyContent: 'center' }]} maxLength={10} keyboardType='numeric'
@@ -94,13 +103,14 @@ export default function Setup({navigation}) {
                         </View>
                     </View>
                     {errorMessage ? <Text style={{ marginTop: '2%', color: 'red' }}>{errorMessage}</Text> : null}
-                    <Pressable style={[globalStyles.btnPrimary]} onPress={nextPress}>
-                    <Text style={{ fontSize: 24, color: 'white',fontWeight:'bold' }}> Next </Text>
-                </Pressable>
-            </View>
+                    <Pressable style={[globalStyles.btnPrimary]} onPress={requestOTP}>
+                        <Text style={{ fontSize: 24, color: 'white', fontWeight: 'bold' }}> Next </Text>
+                    </Pressable>
+                </View>
             </Pressable>
-            </KeyboardAvoidingView>
-    );
+        </KeyboardAvoidingView>
+        )
+    }
 }
 
 const screenWidth = Dimensions.get('window').width;

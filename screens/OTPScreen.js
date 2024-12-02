@@ -17,7 +17,7 @@ export default function Setup({ navigation,updateStatus,route}) {
     const [loading, setLoading] = React.useState(false);
 
     function validate() {
-        if (otp === '1234') {
+        if (otp.length === 6) {
             return true;
         } else {
             setErrorMessage('Please enter a valid OTP.')
@@ -32,15 +32,15 @@ export default function Setup({ navigation,updateStatus,route}) {
         if (isValid) {
             setErrorMessage('');
             setLoading(true);
-            const data = { OTP: otp, phone: phoneNumber };
+            const data = { otp: otp, phone: phoneNumber };
            
             try {
-                const res = await apiService.post('', data);
-                if (res.status) {
-                    setErrorMessage('The OTP you provided is incorrect, try again.');
+                const res = await apiService.auth.post('verify-otp', data);
+                if (res.error) {
+                    setErrorMessage(error);
                 } else {
-                    // await storageService.save('userId', res.id);
-                    await storageService.save('token', res.token);
+                    console.log(res);
+                    await storageService.save('token', res.token.replace(/['"]/g, ''));
                     await storageService.save('isSignedIn', true);
                     updateStatus();
                     navigation.dispatch(
@@ -52,7 +52,7 @@ export default function Setup({ navigation,updateStatus,route}) {
                 }
 
             } catch (error) {
-                setErrorMessage('Failed to verify phone number, Please try again.');
+                setErrorMessage('Something went wrong, Please try again.');
             } finally {
                 setLoading(false);
             }
@@ -113,7 +113,7 @@ export default function Setup({ navigation,updateStatus,route}) {
 
                     </View>
                     {errorMessage ? <Text style={{ color: 'red' }}>{errorMessage}</Text> : null}
-                    <Pressable style={globalStyles.btnPrimary} onPress={signUp}>
+                    <Pressable style={globalStyles.btnPrimary} onPress={confirmOTP}>
                         <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 24 }}>Confirm</Text>
                     </Pressable>
                     <Pressable style={styles.btnChangeNum} onPress={() => navigation.goBack()} >

@@ -7,27 +7,13 @@ import { apiService } from "../utils/apiService";
 
 
 
-export default function ProfileScreen({navigation}) {
-    const [user, setUser] = React.useState(storageService.get('userId'));
-   async function getUser() {
-        const userId = await storageService.get('userId')
-        
-        try {
-            const res = await apiService.get('user', userId.replace(/['"]/g, ''))
-            return setUser(res)
-        } catch {
-
-        }
-    }
-
-    React.useState(() => {
-        getUser()
-    },[])
+export default function ProfileScreen({ navigation }) {
+    const [token, setToken] = React.useState();
 
     function logout() {
 
-        storageService.remove('userId'),
-            storageService.remove('isSignedIn'),
+        storageService.remove('isSignedIn');
+            storageService.remove('token');
             navigation.dispatch(
                 CommonActions.reset({
                     index: 0,
@@ -39,8 +25,6 @@ export default function ProfileScreen({navigation}) {
     return (
         <View style={styles.container}>
             <View style={styles.main}>
-                <Text style={styles.subtitle}>{user.name}</Text>
-                <Text style={styles.subtitle}>{user.phone}</Text>
                 <Pressable style={globalStyles.btnPrimary} onPress={logout}>
                     <Text style={globalStyles.btnText}>Logout</Text>
                 </Pressable>
