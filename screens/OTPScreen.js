@@ -37,7 +37,7 @@ export default function Setup({ navigation,updateStatus,route}) {
             try {
                 const res = await apiService.auth.post('verify-otp', data);
                 if (res.error) {
-                    setErrorMessage(error);
+                    setErrorMessage(res.error);
                 } else {
                     console.log(res);
                     await storageService.save('token', res.token.replace(/['"]/g, ''));

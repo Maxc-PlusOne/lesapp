@@ -17,7 +17,7 @@ export const locationService = {
                 })
                 .then(res => { return res })
                 .catch(error => {
-                    console.log('Could not reach API', error);
+                    console.log('Could not reach Geocoding API', error);
                     throw error;
                 })
         )

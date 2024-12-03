@@ -40,6 +40,7 @@ export const apiService = {
                         console.log('api says post request failed, STATUS:', res.status);
                         console.log(res);
                         const response = await res.json()
+                        console.log(response);
                         const error = response.error;
                         return { error: error }
                     }
