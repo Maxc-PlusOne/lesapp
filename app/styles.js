@@ -28,7 +28,7 @@ export const globalStyles = StyleSheet.create({
         borderWidth: 2,
         borderRadius: 15,
         width: width * 0.85,
-        height: 60,
+        height: 56,
         paddingLeft: 20,
         fontSize: 16,
         marginVertical: '1%'

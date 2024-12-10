@@ -3,9 +3,11 @@ import {
     View, Text, StyleSheet, TextInput, Dimensions,
     Pressable, Image, Keyboard, KeyboardAvoidingView, Platform
 } from 'react-native';
-import { globalStyles } from "../app/styles";
+import { RNPickerSelectStyles, globalStyles } from "../app/styles";
 import { apiService } from "../utils/apiService";
 import Loading from "../components/ActivityIndicator";
+import RNPickerSelect from 'react-native-picker-select';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 export default function Setup({navigation}) {
     const [name, setName] = React.useState('');
@@ -96,15 +98,26 @@ export default function Setup({navigation}) {
                     <View style={{ paddingTop: 4 }}>
                         <Text style={globalStyles.inputLabel}>Mobile Number</Text>
                         <View style={styles.comboBox}>
-                            <TextInput disabled='true' style={[globalStyles.input, { width: '20%', justifyContent: 'center' }]} maxLength={10} keyboardType='numeric'
-                                onChangeText={(value) => { setPhonePreffix(value) }} value='+27' />
-                            <TextInput style={[globalStyles.input, { width: '80%' }]} maxLength={9} keyboardType='numeric'
+                            {/*<TextInput disabled='true' style={[globalStyles.input, { width: '20%', justifyContent: 'center' }]} maxLength={10} keyboardType='numeric'*/}
+                                {/*    onChangeText={(value) => { setPhonePreffix(value) }} value='+27' />*/}
+                                <View style={{ overflow: "hidden", borderTopLeftRadius: 15, borderBottomLeftRadius: 15 }}>
+                                    <RNPickerSelect
+                                        useNativeAndroidPickerStyle={false}
+                                        //Icon={() => <MaterialIcons name='arrow-drop-down' size={24} color='black'/>}
+                                        value='+27'
+                                        onValueChange={(value) => setPhonePreffix(value)}
+                                        style={RNPickerSelectStyle}
+                                        items={[
+                                            { label: '+27', value: '+27' }
+                                        ]} />
+                                </View>
+                                <TextInput style={[globalStyles.input, { flexShrink: 5, borderBottomLeftRadius: 0, borderTopLeftRadius:0 }]} maxLength={9} keyboardType='numeric'
                                 onChangeText={(value) => { setPhoneSuffix(value) }} value={phoneSuffix} />
                         </View>
                     </View>
                     {errorMessage ? <Text style={{ marginTop: '2%', color: 'red' }}>{errorMessage}</Text> : null}
                     <Pressable style={[globalStyles.btnPrimary]} onPress={requestOTP}>
-                        <Text style={{ fontSize: 24, color: 'white', fontWeight: 'bold' }}> Next </Text>
+                        <Text style={{ fontSize: 24, color: 'white', fontWeight: 'bold' }}>Next</Text>
                     </Pressable>
                 </View>
             </Pressable>
@@ -154,7 +167,37 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         gap: 5,
         width: screenWidth * 0.85,
-        justifyContent:'space-evenly'
+        justifyContent: 'center',
+        alignItems:'center'
+
+    }
+});
+const RNPickerSelectStyle = StyleSheet.create({
+    inputIOS: {
+        alignSelf: 'center',
+        width:10,
+        fontSize: 16,
+        borderRadius: 15,
+        paddingVertical: 12,
+        paddingHorizontal: 10.,
+        borderRadius: 10,
+        color: 'black',
+
+    },
+    iconContainer: {
+        alignSelf: "center"
+    },
+    inputAndroid: {
+        alignContent:'center',
+        alignSelf: 'center',
+        width:56,
+        paddingVertical: 12,
+        paddingHorizontal: 16,
+        backgroundColor:'grey',
+        borderWidth: 2,
+        borderColor:'grey',
+
+    
 
     }
 });

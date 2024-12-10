@@ -3,20 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\source\\lesapp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\source\\lesapp\\screens\\ProfileScreen.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:screens\\ProfileScreen.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\source\\lesapp\\screens\\InitialScreen.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:screens\\InitialScreen.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\source\\lesapp\\screens\\OTPScreen.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:screens\\OTPScreen.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\source\\lesapp\\app\\styles.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app\\styles.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\source\\lesapp\\components\\Oops.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:components\\Oops.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\source\\lesapp\\components\\Capture.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:components\\Capture.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\source\\lesapp\\utils\\apiService.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:utils\\apiService.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\source\\lesapp\\screens\\InitialScreen.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:screens\\InitialScreen.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\source\\lesapp\\screens\\OTPScreen.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:screens\\OTPScreen.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Admin\\source\\lesapp\\screens\\ProfileScreen.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:screens\\ProfileScreen.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,56 +38,114 @@
       "DocumentGroups": [
         {
           "DockedWidth": 431,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 10,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
+              "Title": "styles.js",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\lesapp\\app\\styles.js",
+              "RelativeDocumentMoniker": "app\\styles.js",
+              "ToolTip": "C:\\Users\\Admin\\source\\lesapp\\app\\styles.js",
+              "RelativeToolTip": "app\\styles.js",
+              "ViewState": "AQIAAFoAAAAAAAAAAAAAAB4AAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-12-09T09:54:13.966Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Oops.js",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\lesapp\\components\\Oops.js",
+              "RelativeDocumentMoniker": "components\\Oops.js",
+              "ToolTip": "C:\\Users\\Admin\\source\\lesapp\\components\\Oops.js",
+              "RelativeToolTip": "components\\Oops.js",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACEAAAAGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-12-05T10:42:21.455Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Capture.js",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\lesapp\\components\\Capture.js",
+              "RelativeDocumentMoniker": "components\\Capture.js",
+              "ToolTip": "C:\\Users\\Admin\\source\\lesapp\\components\\Capture.js",
+              "RelativeToolTip": "components\\Capture.js",
+              "ViewState": "AQIAAOQAAAAAAAAAAAAowLMAAAA6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-12-04T07:10:51.272Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "ProfileScreen.js",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\lesapp\\screens\\ProfileScreen.js",
               "RelativeDocumentMoniker": "screens\\ProfileScreen.js",
               "ToolTip": "C:\\Users\\Admin\\source\\lesapp\\screens\\ProfileScreen.js",
               "RelativeToolTip": "screens\\ProfileScreen.js",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABgAAAAMAAAA",
+              "ViewState": "AQIAABgAAAAAAAAAAAAAADQAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2024-12-02T10:00:56.275Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "OTPScreen.js",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\lesapp\\screens\\OTPScreen.js",
               "RelativeDocumentMoniker": "screens\\OTPScreen.js",
               "ToolTip": "C:\\Users\\Admin\\source\\lesapp\\screens\\OTPScreen.js",
               "RelativeToolTip": "screens\\OTPScreen.js",
-              "ViewState": "AQIAACUAAAAAAAAAAAAQwCwAAAAjAAAA",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAACYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-12-02T08:48:14.597Z"
+              "WhenOpened": "2024-12-02T08:48:14.597Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "apiService.js",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\lesapp\\utils\\apiService.js",
               "RelativeDocumentMoniker": "utils\\apiService.js",
               "ToolTip": "C:\\Users\\Admin\\source\\lesapp\\utils\\apiService.js",
               "RelativeToolTip": "utils\\apiService.js",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAACgAAAApAAAA",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAADEAAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-11-28T10:00:05.105Z"
+              "WhenOpened": "2024-11-28T10:00:05.105Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "InitialScreen.js",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\lesapp\\screens\\InitialScreen.js",
               "RelativeDocumentMoniker": "screens\\InitialScreen.js",
               "ToolTip": "C:\\Users\\Admin\\source\\lesapp\\screens\\InitialScreen.js",
               "RelativeToolTip": "screens\\InitialScreen.js",
-              "ViewState": "AQIAAB0AAAAAAAAAAAAgwBkAAAA4AAAA",
+              "ViewState": "AQIAAGcAAAAAAAAAAAAAAGcAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-09-02T08:52:04.247Z"
+              "WhenOpened": "2024-09-02T08:52:04.247Z",
+              "EditorCaption": ""
             }
           ]
         }
