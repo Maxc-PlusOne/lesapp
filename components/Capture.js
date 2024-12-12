@@ -56,27 +56,24 @@ export default function Capture({ route }) {
     //Sending data using service API
     async function sendData() {
         setLoading(true)
-
-        const userId = await storageService.get('userId')
         const newAlert = {
-            photo: photoUri,
             location: {
                 lat: locationParam.location.coords.latitude,
-                lng: locationParam.location.coords.longitude
+                lon: locationParam.location.coords.longitude
             },
-            user: userId.replace(/['"]/g, '') ,
-            severity: null
+            // photo: photoUri,
+            //severity: null
         }
         try {
             const res = await apiService.post('alerts', newAlert)
-            if (res.status) {
-                setErrorStatus(res.status)
+            if (res.error) {
+                setErrorStatus(res.error)
                 setError(true)
             } else {
                 return setSuccessful(true)
             }
-            //return console.log(res);
-        } catch {
+        } catch (error) {
+            console.log(error)
             return (setError(true))
         } finally {
             setLoading(false)

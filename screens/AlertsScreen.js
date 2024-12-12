@@ -8,38 +8,37 @@ import { useNavigation } from '@react-navigation/native';
 
 export default function AlertsScreen() {
 
-    const [data, setData] = react.useState(null);
+    const [alerts, setAlerts] = react.useState(null);
     const [statusCode, setStatusCode] = react.useState(null);
     const navigation = useNavigation();
 
 
-    async function getData() {
+    async function getAlerts() {
         try {
             const res = await apiService.get('alerts');
             if (res.status) {
                 setStatusCode(res.status)
-                setData('error')
+                setAlerts('error')
             } else {
-                setData(res)
+                setAlerts(res)
             }
         } catch(error) {
             console.log('...waited for service,', error)
-            setData('error')
-            //missing error catch
+            setAlerts('error')
         }
 
     }
 
-    // Call once after the component mounts
+    //Call once, after the component mounts
     react.useEffect(() => {
-        getData()
+        getAlerts()
     }, []);
 
     function viewItem(value) {
         return navigation.navigate('AlertView', { id: value });
     }
 
-    //function to render FlatList item
+    //Function to render FlatList item
     function render({ item }) {
         return (
             <Pressable onPress={() => { viewItem(item.id) } }>
@@ -52,9 +51,9 @@ export default function AlertsScreen() {
 
 
     //Output
-    if (!data) {
+    if (!alerts) {
         return <Loading />
-    } else if (data === 'error') {
+    } else if (alerts === 'error') {
         return <Oops status={statusCode} />;
     }
 
@@ -63,7 +62,7 @@ export default function AlertsScreen() {
         < View style = { styles.container } >
             <View style={styles.main}>
                 <FlatList
-                    data={data}
+                    data={alerts}
                     renderItem={render}
                     keyExtractor={item => item.id.toString()}
                     ItemSeparatorComponent={() =>
