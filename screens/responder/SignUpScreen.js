@@ -3,16 +3,15 @@ import {
     View, Text, StyleSheet, TextInput, Dimensions,
     Pressable, Image, Keyboard, KeyboardAvoidingView, Platform
 } from 'react-native';
-import { RNPickerSelectStyles, globalStyles } from "../app/styles";
-import { apiService } from "../utils/apiService";
-import Loading from "../components/ActivityIndicator";
+import { RNPickerSelectStyles, globalColors, globalStyles } from "../../app/styles";
+import { apiService } from "../../utils/apiService";
+import Loading from "../../components/ActivityIndicator";
 import RNPickerSelect from 'react-native-picker-select';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
-export default function Setup({navigation}) {
+export default function SignUp({navigation}) {
     const [name, setName] = React.useState('');
-    const [phonePreffix, setPhonePreffix] = React.useState('+27');
-    const [phoneSuffix, setPhoneSuffix] = React.useState('');
+    const [code, setCode] = React.useState('');
     const [errorMessage, setErrorMessage] = React.useState('');
     const [loading, setLoading] = React.useState(false);
 
@@ -69,10 +68,7 @@ export default function Setup({navigation}) {
         }
 
     }
-    function navigateToSignUp() {
-        navigation.navigate('SignUp')
-        
-    }
+
     if (loading) {
         return <Loading />
     } else {
@@ -84,46 +80,29 @@ export default function Setup({navigation}) {
         >
             <Pressable onPress={Keyboard.dismiss} style={styles.container}>
 
-                <Image style={styles.img} source={require('../assets/images/BLOKI.png')} />
-                <Text style={styles.title}> Getting you started.</Text>
-
+                    <Image style={styles.img} source={require('../../assets/images/WLOKI.png')} />
+                    <Text style={{ paddingTop:20, textAlign: 'center', fontSize: 16, color: 'white' }}> Create a new responder profile. </Text>
                 <View style={styles.formContainer}>
-                    <View>
-                        <Text style={globalStyles.inputLabel}>Full Name</Text>
-                        <TextInput style={[globalStyles.input]} maxLength={20}
+                        <View>
+                            <Text style={[globalStyles.inputLabel, { color: 'white' }]}>Name</Text>
+                            <TextInput style={[globalStyles.input, { borderColor: 'white', color:'white' }]} maxLength={20}
                             onChangeText={(value) => {
                                 setName(value)
                             }} value={name}
-                            placeholder='Enter your name and surname'
+                            placeholder='enter your name and surname'
 
                         />
                     </View>
                     <View style={{ paddingTop: 4 }}>
-                        <Text style={globalStyles.inputLabel}>Mobile Number</Text>
-                        <View style={styles.comboBox}>
-                            {/*<TextInput disabled='true' style={[globalStyles.input, { width: '20%', justifyContent: 'center' }]} maxLength={10} keyboardType='numeric'*/}
-                                {/*    onChangeText={(value) => { setPhonePreffix(value) }} value='+27' />*/}
-                                <View style={{ overflow: "hidden", borderTopLeftRadius: 15, borderBottomLeftRadius: 15 }}>
-                                    <RNPickerSelect
-                                        useNativeAndroidPickerStyle={false}
-                                        //Icon={() => <MaterialIcons name='arrow-drop-down' size={24} color='black'/>}
-                                        value='+27'
-                                        onValueChange={(value) => setPhonePreffix(value)}
-                                        style={RNPickerSelectStyle}
-                                        items={[
-                                            { label: '+27', value: '+27' }
-                                        ]} />
-                                </View>
-                                <TextInput style={[globalStyles.input, { flexShrink: 5, borderBottomLeftRadius: 0, borderTopLeftRadius:0 }]} maxLength={9} keyboardType='numeric'
-                                onChangeText={(value) => { setPhoneSuffix(value) }} value={phoneSuffix} />
+                            <Text style={[globalStyles.inputLabel, {color:'white'}]}>Client Code</Text>
+                            <TextInput style={[globalStyles.input, { borderColor:'white',color:'white' }]} maxLength={5} keyboardType='numeric'
+                                onChangeText={(value) => { setCode(value) }} value={code}
+                                placeholder='provided by your company'
+                            />
                         </View>
-                    </View>
-                    {errorMessage ? <Text style={{ marginTop: '2%', color: 'red' }}>{errorMessage}</Text> : null}
-                    <Pressable style={[globalStyles.btnPrimary]} onPress={requestOTP}>
-                        <Text style={{ fontSize: 24, color: 'white', fontWeight: 'bold' }}>Next</Text>
-                    </Pressable>
-                    <Pressable onPress={navigateToSignUp}>
-                        <Text style={[{color:'grey', alignSelf:'self-end'}]}>sign-up as a responder</Text>
+                        {errorMessage ? <Text style={{ marginTop: '2%', color: 'red' }}>{errorMessage}</Text> : null}
+                        <Pressable style={[globalStyles.btnPrimary, { backgroundColor: 'white' }]} onPress={requestOTP}>
+                            <Text style={{ fontSize: 24, color: globalColors.primary.default , fontWeight: 'bold' }}>Next</Text>
                     </Pressable>
                 </View>
             </Pressable>
@@ -140,7 +119,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'white',
+        backgroundColor: globalColors.primary.default,
     },
     formContainer: {
         width: '100%',

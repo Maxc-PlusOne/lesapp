@@ -5,6 +5,7 @@ import {View, StyleSheet, Text} from 'react-native'
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from '@react-navigation/stack';
+//Screens
 import HomeScreen from "../screens/HomeScreen";
 import AlertsScreen from "../screens/AlertsScreen";
 import ProfileScreen from "../screens/ProfileScreen";
@@ -18,9 +19,13 @@ import PersonalDetails from "../screens/profile/PersonalDetails";
 import HealthInformation from "../screens/profile/HealthInfo";
 import MedicalAid from "../screens/profile/MedicalAid";
 import Settings from "../screens/profile/Settings";
+import SignUp from "../screens/responder/SignUpScreen";
+
+// ---//
 
 export default function App() {
     const [isSignedIn, setIsSignedIn] = React.useState('pending');
+    const [userType, setUserType] = React.useState('patient')
     const Tab = createBottomTabNavigator();
     const Stack = createStackNavigator();
     const updateIsSignedIn = () => {
@@ -99,8 +104,14 @@ export default function App() {
 
         return (
             <Tab.Navigator screenOptions={sOptions}>
-                <Tab.Screen name="Home" component={HomeScreen} />
-                <Tab.Screen name="Alerts" component={AlertsScreen} />
+                {
+                    userType === 'patient' ?
+                        <Tab.Screen name="Home" component={HomeScreen} /> : null
+                }
+                {
+                    userType === 'responder' ?
+                        <Tab.Screen name="Alerts" component={AlertsScreen} /> : null
+                }
                 <Tab.Screen name="Profile" component={ProfileScreen} />
             </Tab.Navigator>
         );
@@ -119,8 +130,9 @@ export default function App() {
         return (
             <Tab.Navigator screenOptions={{ headerShown: false, tabBarShown: false, initialRoute: 'Initial' }}>
                 <Tab.Screen name="Initial" component={InitialScreen} options={options} />
-                <Tab.Screen name="OTP" component={OTPScreenWrapper}
-                    options={options} />
+                <Tab.Screen name="OTP" component={OTPScreenWrapper} options={options} />
+                <Tab.Screen name="SignUp" component={SignUp} options={options} />
+               
             </Tab.Navigator>
         );
     }
