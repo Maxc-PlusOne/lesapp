@@ -14,6 +14,10 @@ import Capture from "../components/Capture";
 import AlertViewScreen from "../screens/AlertViewScreen";
 import storageService from "../utils/storageService";
 import Loading from "../components/ActivityIndicator";
+import PersonalDetails from "../screens/profile/PersonalDetails";
+import HealthInformation from "../screens/profile/HealthInfo";
+import MedicalAid from "../screens/profile/MedicalAid";
+import Settings from "../screens/profile/Settings";
 
 export default function App() {
     const [isSignedIn, setIsSignedIn] = React.useState('pending');
@@ -42,6 +46,10 @@ export default function App() {
                 <Stack.Screen name='Capture' component={Capture} />
                 <Stack.Screen name='AlertView' component={AlertViewScreen} />
                 <Stack.Screen name='Welcome' component={InitialSetup} />
+                <Stack.Screen name='Personal' component={PersonalDetails} />
+                <Stack.Screen name='Health' component={HealthInformation} />
+                <Stack.Screen name='Medical' component={MedicalAid} />
+                <Stack.Screen name='Settings' component={Settings} />
             </Stack.Navigator>
         )
     }

@@ -20,6 +20,9 @@ export const globalColors = {
         primary:'#B11B23',
         secondary:'#ACB3B9'
     },
+    surface: {
+        light: "#f9f9f9"
+    }
 }
 
 export const globalStyles = StyleSheet.create({
@@ -36,13 +39,14 @@ export const globalStyles = StyleSheet.create({
 
 
     btnPrimary: {
+        flexDirection: 'row',
         marginVertical: '2%',
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: globalColors.primary.default,
         borderRadius: 15,
         width: width * 0.85,
-        height: 60,
+        height: 50,
         gap:4,
         paddingHorizontal: '4%',
     },    
@@ -53,18 +57,19 @@ export const globalStyles = StyleSheet.create({
         backgroundColor: globalColors.secondary.default,
         borderRadius: 15,
         width: width * 0.85,
-        height: 60,
+        height: 50,
         paddingHorizontal: '4%',
 
     },
     shadow: {
         // iOS shadow
         shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
+        shadowOffset: { width: 0, height: 4 },
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
 
         // Android shadows
+        elevation: 5, // For smooth edges that blend better with the shadow
 
     },
     btnText: {
@@ -93,7 +98,12 @@ export const globalStyles = StyleSheet.create({
     subtitle: {
         size: 48,
         fontWeight: 'bold',
+        margin:8
     },
+    container: {
+        padding: 16,
+        backgroundColor: "#f9f9f9",
+    }
 
 
 });

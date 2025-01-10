@@ -4,10 +4,9 @@
     "\\app",
     "\\assets",
     "\\assets\\images",
-    "\\components",
     "\\screens",
     "\\utils"
   ],
-  "SelectedNode": "\\app\\styles.js",
+  "SelectedNode": "\\utils\\apiService.js",
   "PreviewInSolutionExplorer": false
 }
