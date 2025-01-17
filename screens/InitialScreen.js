@@ -3,7 +3,7 @@ import {
     View, Text, StyleSheet, TextInput, Dimensions,
     Pressable, Image, Keyboard, KeyboardAvoidingView, Platform
 } from 'react-native';
-import { RNPickerSelectStyles, globalStyles } from "../app/styles";
+import { RNPickerSelectStyles, globalColors, globalStyles } from "../app/styles";
 import { apiService } from "../utils/apiService";
 import Loading from "../components/ActivityIndicator";
 import RNPickerSelect from 'react-native-picker-select';
@@ -94,7 +94,7 @@ export default function Setup({navigation}) {
                             onChangeText={(value) => {
                                 setName(value)
                             }} value={name}
-                            placeholder='Enter your name and surname'
+                            placeholder='Name and surname'
 
                         />
                     </View>
@@ -116,16 +116,21 @@ export default function Setup({navigation}) {
                                 </View>
                                 <TextInput style={[globalStyles.input, { flexShrink: 5, borderBottomLeftRadius: 0, borderTopLeftRadius:0 }]} maxLength={9} keyboardType='numeric'
                                 onChangeText={(value) => { setPhoneSuffix(value) }} value={phoneSuffix} />
-                        </View>
+                            </View>
                     </View>
-                    {errorMessage ? <Text style={{ marginTop: '2%', color: 'red' }}>{errorMessage}</Text> : null}
-                    <Pressable style={[globalStyles.btnPrimary]} onPress={requestOTP}>
-                        <Text style={{ fontSize: 24, color: 'white', fontWeight: 'bold' }}>Next</Text>
-                    </Pressable>
-                    <Pressable onPress={navigateToSignUp}>
-                        <Text style={[{color:'grey', alignSelf:'self-end'}]}>sign-up as a responder</Text>
-                    </Pressable>
-                </View>
+                        {errorMessage ? <Text style={{ marginTop: '2%', color: 'red' }}>{errorMessage}</Text> : null}
+                        <Pressable style={({ pressed }) => [globalStyles.btnPrimary, pressed && globalStyles.btnPressed]} onPress={requestOTP}>
+                            <Text style={{ fontSize: 24, color: 'white', fontWeight: 'bold' }}>Next</Text>
+                        </Pressable>
+                    </View>
+                    <View style={styles.bottomContainer}>
+                        <Pressable onPress={navigateToSignUp}>
+                            <Text style={[{ color: globalColors.secondary.default, alignSelf: 'center' }]}>Sign-up as a responder</Text>
+                        </Pressable>
+                        <Pressable syles={globalStyles.btnSecondary}>
+                            <Text style={[{ color:'grey' , alignSelf: 'center' }]}>Already have an account? Login Instead</Text>
+                        </Pressable>
+                    </View>
             </Pressable>
         </KeyboardAvoidingView>
         )
@@ -141,11 +146,21 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'white',
+        flexGrow: 2,
+
     },
+
     formContainer: {
         width: '100%',
         alignItems: 'center',
         marginVertical: '8%',
+        justifyContent:'center'
+    },
+    bottomContainer: {
+        justifyContent: 'flex-end',
+        flexSrink: 2,
+        top:'8%'
+
     },
     input: {
         borderColor: '#808A93',
@@ -163,6 +178,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 24,
         alignContent: 'center',
+        padding:8
     },
     img: {
         alignSelf: 'center',

@@ -8,31 +8,28 @@ import { apiService } from "../../utils/apiService";
 import Loading from "../../components/ActivityIndicator";
 import RNPickerSelect from 'react-native-picker-select';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import {useNavigation} from '@react-navigation/native';
+import storageService from "../../utils/storageService";
 
-export default function SignUp({navigation}) {
+export default function SignUp() {
     const [name, setName] = React.useState('');
     const [code, setCode] = React.useState('');
     const [errorMessage, setErrorMessage] = React.useState('');
     const [loading, setLoading] = React.useState(false);
+    const [email, setEmail] = React.useState('')
+    const navigation = useNavigation();
 
     /////// For Real API /////
     async function requestOTP() { 
         setErrorMessage('');
         const isValid = validate();
-        const phoneNumber = phonePreffix + phoneSuffix;
-        const user = { name: name, phone: phoneNumber }
+        const user = { name: name, email: email }
         if (isValid) {
             setLoading(true)
             try {
-                const res = await apiService.auth.post('signup', user)
-                if (res.error) {
-                    console.log(res.error)
-                    setErrorMessage(res.error)
-                } else {
-                    navigation.navigate('OTP', { phoneNumber, name });
-                }
-            } catch (error) {
-                setErrorMessage('Something went wrong, Please try again.')
+                await storageService.save('isSignedIn', true);
+                await storageService.save('userType', 'responder');
+                navigation.navigate('Main');
             }
             finally {
                 setLoading(false)
@@ -40,26 +37,22 @@ export default function SignUp({navigation}) {
         }
     } 
 
-
-    function nextPress() {
-        const isValid = validate();
-        const phoneNumber = phonePreffix + phoneSuffix;
-        if (isValid) {
-            navigation.navigate('OTP', { phoneNumber, name }); 
-        }
-    }
-
     function validate() {
-        const isNumbersOnly = (input) => /^\d+$/.test(input);
+        const isNumbers = (input) => /^\d+$/.test(input);
+        const email = (input) => /^[^@]+@[^@]+\.[^@]+$/.test(input);
         if (!name) {
             setErrorMessage('Name cannot be empty!');
             return false;
-        } else if (phoneSuffix.length !== 9) {
-            setErrorMessage('Please enter a valid phone number.');
+        //} else if ('') {
+        //    setErrorMessage('Name cannot contain digit(s)!')
+        //    return false;
+        } else if (!code) {
+            setErrorMessage('Please enter a valid client code!');
             return false;
         }
-        else if (!isNumbersOnly(phoneSuffix)) {
-            setErrorMessage('Phone number contains non-numeric character')
+        
+        else if (!isNumbers(code)) {
+            setErrorMessage('Code contains non-numeric character(s)!')
             return false;
         } else {    
             setErrorMessage();
@@ -76,33 +69,47 @@ export default function SignUp({navigation}) {
             <KeyboardAvoidingView
             style={styles.container}
             behavior={Platform.OS === "ios" ? "padding" : "height"}
-            keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20} // Adjust if needed
+            keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}
         >
             <Pressable onPress={Keyboard.dismiss} style={styles.container}>
 
                     <Image style={styles.img} source={require('../../assets/images/WLOKI.png')} />
-                    <Text style={{ paddingTop:20, textAlign: 'center', fontSize: 16, color: 'white' }}> Create a new responder profile. </Text>
+                    <Text style={[styles.title]}> Create a new responder profile. </Text>
                 <View style={styles.formContainer}>
                         <View>
-                            <Text style={[globalStyles.inputLabel, { color: 'white' }]}>Name</Text>
+                            <Text style={[globalStyles.inputLabel, { color: 'white' }]}>Full Name</Text>
                             <TextInput style={[globalStyles.input, { borderColor: 'white', color:'white' }]} maxLength={20}
                             onChangeText={(value) => {
                                 setName(value)
                             }} value={name}
-                            placeholder='enter your name and surname'
+                                placeholder='Name and Surname'
+                                placeholderTextColor={globalColors.secondary.default}
 
                         />
-                    </View>
+                        </View>
+                        <View>
+                            <Text style={[globalStyles.inputLabel, { color: 'white' }]}>Email Address</Text>
+                            <TextInput style={[globalStyles.input, { borderColor: 'white', color: 'white' }]}
+                                onChangeText={(value) => setEmail(value)}
+                                value={email}
+                                inputMode={email}
+                                autoComplete={email}
+                                placeholder='Email Address'
+                                placeholderTextColor={globalColors.secondary.default}
+                            />
+                        </View>
                     <View style={{ paddingTop: 4 }}>
                             <Text style={[globalStyles.inputLabel, {color:'white'}]}>Client Code</Text>
                             <TextInput style={[globalStyles.input, { borderColor:'white',color:'white' }]} maxLength={5} keyboardType='numeric'
                                 onChangeText={(value) => { setCode(value) }} value={code}
-                                placeholder='provided by your company'
+                                placeholder='Provided by your company'
+                                placeholderTextColor={globalColors.secondary.default}
                             />
                         </View>
-                        {errorMessage ? <Text style={{ marginTop: '2%', color: 'red' }}>{errorMessage}</Text> : null}
+
+                        {errorMessage ? <Text style={{ marginTop: '2%', color: globalColors.primary.default }}>{errorMessage}</Text> : null}
                         <Pressable style={[globalStyles.btnPrimary, { backgroundColor: 'white' }]} onPress={requestOTP}>
-                            <Text style={{ fontSize: 24, color: globalColors.primary.default , fontWeight: 'bold' }}>Next</Text>
+                            <Text style={{ fontSize: 24, color: '#141414' , fontWeight: 'bold' }}>Next</Text>
                     </Pressable>
                 </View>
             </Pressable>
@@ -119,7 +126,8 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: globalColors.primary.default,
+        backgroundColor: "#141414",
+        flexGrow:2
     },
     formContainer: {
         width: '100%',
@@ -140,8 +148,10 @@ const styles = StyleSheet.create({
         left:'4%'
     },
     title: {
-        fontSize: 24,
+        fontSize: 16,
         alignContent: 'center',
+        padding: 8,
+        color:'white'
     },
     img: {
         alignSelf: 'center',

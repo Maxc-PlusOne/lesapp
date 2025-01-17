@@ -25,21 +25,29 @@ import SignUp from "../screens/responder/SignUpScreen";
 
 export default function App() {
     const [isSignedIn, setIsSignedIn] = React.useState('pending');
-    const [userType, setUserType] = React.useState('patient')
+    const [userType, setUserType] = React.useState('pending')
     const Tab = createBottomTabNavigator();
     const Stack = createStackNavigator();
-    const updateIsSignedIn = () => {
-        checkSignInStatus()
+    const OTPScreenWrapper = (props) => <OTPScreen {...props} updateStatus={userCheck}/>;
+    const userCheck = () => {
+        fetchType();
+        fetchSignIn();
     };
-    const OTPScreenWrapper = (props) => <OTPScreen {...props} updateStatus={updateIsSignedIn} />;
-    const checkSignInStatus = () => {
+
+    const fetchSignIn = () => {
         storageService.get('isSignedIn').then(value => {
-            setIsSignedIn(value);
+            setIsSignedIn(value)
+        });
+    };
+
+    const fetchType = () => {
+        storageService.get('userType').then(value => {
+            setUserType(value.replace(/['"]/g, ''))
         });
     };
 
     React.useEffect(() => {
-        checkSignInStatus()
+        userCheck();
     }, [])
 
 
@@ -141,12 +149,14 @@ export default function App() {
 
 
     return (
-        console.log('isSignedIn',isSignedIn),
+        console.log('isSignedIn', isSignedIn),
+        console.log('userType', userType),
         <NavigationContainer independent={true}>
                 {
                     isSignedIn === 'true' ? (<MainAppStack />)
-                        : isSignedIn === 'pending' ? (<Loading />)
-                            : (<InitialSetup/>)
+                        : isSignedIn === 'pending' & userType === 'pending' ? (<Loading />)
+                            : isSignedIn === null ? (<InitialSetup />)
+                                : null
                 }
         </NavigationContainer>
     )

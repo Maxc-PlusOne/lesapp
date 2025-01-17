@@ -14,7 +14,8 @@ export default function ProfileScreen({ navigation }) {
     function logout() {
 
         storageService.remove('isSignedIn');
-            storageService.remove('token');
+        storageService.remove('token');
+        storageService.remove('userType');
             navigation.dispatch(
                 CommonActions.reset({
                     index: 0,

@@ -42,6 +42,7 @@ export default function Setup({ navigation,updateStatus,route}) {
                     console.log(res);
                     await storageService.save('token', res.token.replace(/['"]/g, ''));
                     await storageService.save('isSignedIn', true);
+                    await storageService.save('userType','patient');
                     updateStatus();
                     navigation.dispatch(
                         CommonActions.reset({

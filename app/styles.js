@@ -61,6 +61,9 @@ export const globalStyles = StyleSheet.create({
         paddingHorizontal: '4%',
 
     },
+    btnPressed: {
+        opacity: 0.5
+    },
     shadow: {
         // iOS shadow
         shadowColor: '#000',
