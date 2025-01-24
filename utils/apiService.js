@@ -98,6 +98,44 @@ export const apiService = {
                     })
             )
         }
+    },
+    photo: {
+        post: async (alertId, photoUri) => {
+            try {
+                const url = `${baseURL}/alerts/upload-image/${alertId}`;
+                const token = (await storageService.get('token')).replace(/^"|"$/g, '');
+                const formData = new FormData();
+                formData.append("photo", {
+                    uri: photoUri,
+                    name: "photo.png",
+                    type: "image/png"
+                });
+
+                const res = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                    body: formData,
+                })
+
+                if (res.ok) {
+                    return {
+                        status: res.status,
+                        flag:'success'
+                    }
+                } else {
+                    console.log(res);
+                    console.log('Failed to upload image bro, STATUS: ', res.status)
+                    return {
+                        status: res.status,
+                        flag: 'fail'
+                    }
+                }
+            } catch (error) {
+                return error;
+            }
+        }
     }
 }
 

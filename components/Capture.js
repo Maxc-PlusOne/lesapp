@@ -23,7 +23,7 @@ export default function Capture({ route }) {
     const [loading, setLoading] = useState(null);
     const [successful, setSuccessful] = useState(null);
     const [error, setError] = useState(null);
-    const [errorStatus, setErrorStatus] = useState(null);
+    const [message, setMessage] = useState(null);
 
     if (!permission) {
         // Camera permissions are still loading.
@@ -53,36 +53,57 @@ export default function Capture({ route }) {
     }
 
 
-    //Sending data using service API
-    async function sendData() {
+    //Sending alert
+    async function sendAlert() {
         setLoading(true)
         const newAlert = {
             location: {
                 lat: locationParam.location.coords.latitude,
                 lon: locationParam.location.coords.longitude
-            },
-            // photo: photoUri,
-            //severity: null
+            }
         }
         try {
             const res = await apiService.post('alerts', newAlert)
             if (res.error) {
-                setErrorStatus(res.error)
+                setMessage(res.error)
                 setError(true)
             } else {
-                return setSuccessful(true)
+                return res._id;
             }
         } catch (error) {
-            console.log(error)
+            console.log('Send Alert Caught Error: ',error)
             return (setError(true))
         } finally {
             setLoading(false)
            
         }
     }
-    //Function to send SOS (API Request)
+
+    //Sending photo to alert
+    async function sendPhoto() {
+        setLoading(true)
+        try {
+            const alertId = await sendAlert();
+            const res = await apiService.photo.post(alertId, photoUri)
+            if (res.flag == 'fail') {
+                setError(true)
+                setMessage(res.status)
+                console.log('Error while service tried to upload image: ', res.status)
+            } else if (res.flag === 'success') {
+                setSuccessful(true)
+                setMessage('Hang tight, a responder will call you now.')
+            }
+        } catch (error) {
+            console.log('Image Upload Caught Error: ', error)
+        }
+        finally {
+            setLoading(false)
+        }
+
+    }
+
     function submitSOS() {
-      sendData()
+        sendPhoto();
     }
     //Function to close CameraView
     function closeCamera() {
@@ -93,7 +114,8 @@ export default function Capture({ route }) {
     // Function to capture a photo
     async function capturePhoto() {
         if (cameraRef.current) {
-            const photo = await cameraRef.current.takePictureAsync();
+            const options = { quality: 0.5, base64: false, format: 'png' };
+            const photo = await cameraRef.current.takePictureAsync(options);
             setPhotoUri(photo.uri); // Set the photo URI in state
             toggleModal(); // Show the modal to display the photo preview
         }
@@ -101,10 +123,10 @@ export default function Capture({ route }) {
 
     if (successful) {
         return (
-            <Success title='Request Sent' message='Emergency Services will contact you as soon as possible.' buttonText='Done' onButtonPress={closeCamera} />
+            <Success title='Request Sent' message={message} buttonText='Done' onButtonPress={closeCamera} />
         )
     } else if (error) {
-        return <Oops status={errorStatus} />
+        return <Oops status={message} />
     } else {
         return (
             <SafeAreaView style={styles.container}>
