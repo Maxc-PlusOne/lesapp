@@ -20,6 +20,7 @@ import HealthInformation from "../screens/profile/HealthInfo";
 import MedicalAid from "../screens/profile/MedicalAid";
 import Settings from "../screens/profile/Settings";
 import SignUp from "../screens/responder/SignUpScreen";
+import SignIn from "../screens/signin-signup/signIn";
 
 // ---//
 
@@ -140,6 +141,7 @@ export default function App() {
                 <Tab.Screen name="Initial" component={InitialScreen} options={options} />
                 <Tab.Screen name="OTP" component={OTPScreenWrapper} options={options} />
                 <Tab.Screen name="SignUp" component={SignUp} options={options} />
+                <Tab.Screen name="SignIn" component={SignIn} options={options} />
                
             </Tab.Navigator>
         );
