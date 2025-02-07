@@ -1,4 +1,4 @@
-var key = 'AIzaSyBN6zrTJstlBS7DZN-mQpQtUH9SSRElmZ0';
+const key = process.env.EXPO_PUBLIC_GEOLOCATION_API_KEY;
 const baseURL = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=';
 export const locationService = {
   
@@ -8,17 +8,25 @@ export const locationService = {
         const url = baseURL + lat + ',' + lng + '&key=' + key;
         return (
             fetch(url)
-                .then(res => {
-                    if (res.ok) {
-                        return res.json()
+                .then(async (res) => {
+                    const result = await res.json();
+                    
+                    if (result.status === 'REQUEST_DENIED') {
+                        return {
+                            flag: 'fail',
+                            message: result.error_message
+                        }
                     } else {
-                       //Missing Error Handling
+                        return {
+                            flag: 'success',
+                            data:result
+                        }
                     }
+                  
                 })
-                .then(res => { return res })
                 .catch(error => {
                     console.log('Could not reach Geocoding API', error);
-                    throw error;
+                    return error;
                 })
         )
     }

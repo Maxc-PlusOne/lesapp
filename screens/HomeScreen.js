@@ -7,51 +7,87 @@ import Capture from '../components/Capture';
 import Loading from '../components/ActivityIndicator';
 import { locationService } from '../utils/locationService';
 import { globalColors, globalStyles } from '../app/styles';
+import Oops from '../components/Oops';
 
 export default function HomeScreen() {
     const [BtnColor, setBtnColor] = useState(globalColors.primary.default);
     const [isActivated, setIsActivated] = useState(false);
     const [BtnText, setBtnText] = useState('Send SOS');
     const navigation = useNavigation();
-    const [address, setAddress] = useState('');
 
+
+    //// Location logic starts here ////
+    const [address, setAddress] = useState('');
     //Reverse Geocoding 
     async function fetchLocation(lat,lng) {
         const res = await locationService.getLocation(lat, lng);
         const addressComponents = {};
         try {
-            res.results[0].address_components.forEach(component => {
-                component.types.forEach(type => {
-                    addressComponents[type] = component.long_name;
+            console.log(res.data)
+            if (res.flag === 'success') {
+                res.data.results[0].address_components.forEach(component => {
+                    component.types.forEach(type => {
+                        addressComponents[type] = component.long_name;
+                    });
                 });
-            });
-            return setAddress(addressComponents)
-        } catch {
+                setAddress(addressComponents)
+            } else if (res.flag === 'fail') {
+               setAddress(null);
+            }
+        } catch (error) {
+            console.log('Reverse Geocoding Error: ', error)
+            setAddress('error');
+        }
+    }
 
+    //Address Bar Component
+    function AddressInfo({address}) {
+        if (address) {
+            return (
+                <Text style={[styles.infoText]}>
+                    {address['street_number']} {address['route']}, {address['locality']}, {address['postal_code']}
+                </Text>
+            )
+        } else if (address === 'error' || address == null) {
+            return (
+                <Text style={[styles.infoText]}>
+                    Something went wrong, Tap to try again.
+                </Text>
+            )
+        } else {
+            return <Loading/>
         }
     }
 
     // Location (GPT)//
     const [location, setLocation] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
-
+    //Getting Location on component mount.
     useEffect(() => {
-        (async () => {
+        (async (res) => {
             let { status } = await Location.requestForegroundPermissionsAsync();
             if (status !== 'granted') {
                 setErrorMsg('Permission to access location was denied');
                 return;
             }
-            let location = await Location.getCurrentPositionAsync({});
-            setLocation(location);
+            try {
+                const location = await Location.getCurrentPositionAsync({});
+                return setLocation(location);
+            } catch (error) {
+                console.error(error)
+                return <Oops/>
+            }
         })();
     }, []);
 
+    //Runs location when location changes
     useEffect(() => {
         if (location) {
             fetchLocation(location.coords.latitude, location.coords.longitude);
         }
-    }, [location]);
+    }, [location?.coords.latitude, location?.coords.longitude]); //Listening for change.
+
+    //// Location Logic Ends Here ////
 
     if (errorMsg) {
         return (
@@ -121,8 +157,8 @@ export default function HomeScreen() {
 
     return (
         <View style={styles.container}>
-            <Pressable onPress={fetchLocation} style={[styles.infoBar, globalStyles.shadow]}>
-                <Text style={[styles.infoText]}>{address['street_number']} {address['route']}, {address['locality']}, {address['postal_code']}</Text>
+            <Pressable onPress={() => fetchLocation(location.coords.latitude, location.coords.longitude)} style={[styles.infoBar, globalStyles.shadow]}>
+                <AddressInfo address={address} />
             </Pressable>
             <Pressable onPress={sendSOS} style={[{
                 zIndex: 5,
@@ -191,7 +227,7 @@ const styles = StyleSheet.create({
 
     infoText: {
         color: '#5B636C',
-        fontSize: 16,
+        fontSize: 12,
         textAlign:'center',
     },
 
